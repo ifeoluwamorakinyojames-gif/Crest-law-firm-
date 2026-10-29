@@ -1,0 +1,39 @@
+{
+  "heading": "Our Areas of Practice",
+  "intro": "Legal support across personal, corporate, property and dispute-related matters.",
+  "services": [
+    {
+      "title": "Corporate & Regulatory Compliance",
+      "description": "Business and company registration, CAC filings, annual returns, post-incorporation services and regulatory guidance."
+    },
+    {
+      "title": "Property & Real Estate Law",
+      "description": "Property due diligence, land transactions, title searches, tenancy matters and agreements."
+    },
+    {
+      "title": "Family Law",
+      "description": "Divorce, child custody, child welfare and related family legal matters."
+    },
+    {
+      "title": "Litigation & Dispute Resolution",
+      "description": "Legal advice and representation in disputes, negotiation and appropriate resolution procedures."
+    },
+    {
+      "title": "Contract Drafting & Review",
+      "description": "Clear contracts, commercial agreements, review and contractual risk advice."
+    },
+    {
+      "title": "Maritime & Commercial Law",
+      "description": "Maritime-related legal advice and commercial legal matters."
+    },
+    {
+      "title": "Debt Recovery & Recovery of Premises",
+      "description": "Debt recovery, property recovery and related legal matters."
+    },
+    {
+      "title": "Criminal Law & Defence",
+      "description": "Legal consultation and representation in criminal matters where professionally appropriate."
+    }
+  ],
+  "note": "Regulatory support identified by the firm includes NAFDAC registration, SCUML certification, tax compliance, NSITF and other regulatory certifications, subject to Counsel's confirmation of current processes."
+}
