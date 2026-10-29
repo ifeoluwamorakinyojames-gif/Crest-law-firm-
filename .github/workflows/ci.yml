@@ -1,0 +1,43 @@
+name: Development checks
+
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop]
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check required documentation
+        shell: bash
+        run: |
+          test -f README.md
+          test -f AGENTS.md
+          test -f docs/GSTACK_CODEX_SETUP.md
+          test -f docs/RELEASE_GATES.md
+      - name: Verify there are no production deployment workflows
+        shell: bash
+        run: |
+          if grep -REni '(wrangler deploy|vercel --prod|pages deploy|cloudflare deploy)' .github/workflows/; then
+            echo "Production deployment command detected in workflows"
+            exit 1
+          fi
+      - uses: actions/setup-node@v4
+        if: ${{ hashFiles('package.json') != '' }}
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install and build application when added
+        if: ${{ hashFiles('package.json') != '' }}
+        shell: bash
+        run: |
+          test -f package-lock.json || { echo 'Commit a package-lock.json before enabling builds'; exit 1; }
+          npm ci
+          npm run build
+          npm test --if-present
