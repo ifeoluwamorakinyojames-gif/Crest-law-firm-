@@ -1,6 +1,6 @@
 # Codex + gStack for the static Crest Crown landing page
 
-This project has one public landing-page route. There is **no Sanity or CMS** and no production deployment integration.
+This project has one public landing-page route. There is **no Sanity or content database**; a Decap CMS admin interface backed by GitHub has been added. No production deployment integration exists.
 
 ## 1. Branch workflow
 ```bash
@@ -15,7 +15,9 @@ git switch -c feature/my-change
 ```bash
 python3 -m http.server 8000
 python3 scripts/check_site.py
+python3 scripts/check_admin.py
 node --check script.js
+node --check content-loader.js
 ```
 
 ## 3. Codex + gStack
@@ -41,9 +43,12 @@ The GitHub Pages preview workflow lives in `.github/workflows/pages-preview.yml`
 
 1. Open the repo's **Settings → Pages** and select **GitHub Actions** as the build/deployment source.
 2. Review PR changes and passing checks, then merge into `develop`.
-3. GitHub Actions packages the three static site files and deploys the preview to GitHub Pages.
+3. GitHub Actions packages the static site, admin, image uploads and content JSON and deploys the preview to GitHub Pages.
 4. Find the actual staging URL from the successful workflow's `github-pages` environment. Do not assume a URL is live until GitHub confirms deployment.
 
 Never put a `CNAME` file, custom domain, or production token in this workflow. Do not publish `main` automatically. Existing images are temporarily loaded from public staging media until authorized local assets are added.
 
 See `docs/GITHUB_SOURCE_OF_TRUTH.md`.
+
+## Admin workflow
+Website edits made through `/admin/` are GitHub commits and pull requests, not direct server modifications. A trusted GitHub OAuth provider is required before editor login is available. See `docs/ADMIN_SETUP.md`.
