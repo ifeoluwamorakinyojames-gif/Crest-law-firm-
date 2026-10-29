@@ -1,34 +1,16 @@
-# Website release gates — Crest Crown Attorneys
+# Static landing page release gates
 
-## Content and ethics
-- [ ] Founder and Legal Associate biographies, names, titles and photos approved
-- [ ] Academic qualifications and bar memberships verified; unresolved credentials not invented
-- [ ] Services and statutory regulator names confirmed by Counsel
-- [ ] Blog articles legally reviewed, approved and dated accurately
-- [ ] No implied guaranteed legal outcomes or invented client testimonials
+- [ ] Founder and Legal Associate names, roles and photographs approved by the firm
+- [ ] Academic qualifications and affiliations are accurate; no fabricated credentials
+- [ ] Specialisations, regulators, and legal claims approved by Counsel
+- [ ] HTML headings, site metadata and Schema.org structured data reviewed
+- [ ] WhatsApp, email, phone and office map links work
+- [ ] Page sections have usable anchor navigation with visible focus
+- [ ] Responsive layout passes 390px mobile, tablet and desktop review
+- [ ] Keyboard-accessible menu, skip link and team profile disclosures work
+- [ ] Static site source and script checks pass
+- [ ] Images have meaningful alternatives and are served from approved media locations
+- [ ] Official domain, privacy/disclaimer content, and removal of noindex approved
+- [ ] Backup and rollback prepared, with explicit go-live authorization
 
-## Engineering and accessibility
-- [ ] Build, TypeScript, lint and tests pass
-- [ ] Desktop/mobile layout and text alignment checked
-- [ ] Legal team qualifications consistent and readable
-- [ ] All images load with useful alt text
-- [ ] Forms validated, contact links checked, and confidential disclosures discouraged
-- [ ] Authenticated CMS tested with least-privilege roles
-- [ ] Privacy notice and legal disclaimers reviewed by Counsel
-- [ ] Security dependencies and exposure checks reviewed
-- [ ] Performance measured and regressions assessed
-
-## Search readiness
-- [ ] Production domain and DNS authorized by owner
-- [ ] Proper crawlable URLs, not preview-only hash routes
-- [ ] Correct robots rules, canonical URLs, sitemap, and appropriate structured data
-- [ ] Logo and founder/entity profiles verified
-- [ ] Google Search Console configured by an authorized owner
-
-## Deployment authorization
-- [ ] Client approves final site and content
-- [ ] Authorized developer reviews production release
-- [ ] Rollback and backup arrangements verified
-- [ ] Only then can the production domain be modified
-
-**This development repository has no automatic production deployment.**
+No CMS, user login, database, server-side appointment system or blog publishing is included in the approved landing-page scope.
