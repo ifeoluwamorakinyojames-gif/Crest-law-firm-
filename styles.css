@@ -199,3 +199,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #ea
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
 *,*:before,*:after{animation:none!important;transition:none!important}
 }
+
+/* GitHub-edited content and legal insights in the static landing page */
+.landing-articles-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:34px}
+.landing-article{background:#ffffff12;border:1px solid #e2bb7044;padding:23px;border-radius:5px;min-width:0}
+.landing-article small{color:#ebc779;font-size:11px}
+.landing-article h3{color:#fff;font-size:19px;margin:10px 0}
+.landing-article p{color:#c9d9e9;font-size:13px;line-height:1.7}
+.landing-article span{font-size:11px;color:#f2cd87}
+.details-inner .professional-specialisations{padding-left:18px;margin:7px 0}
+.details-inner .professional-specialisations li{line-height:1.75;margin-bottom:5px}
+@media(max-width:860px){.landing-articles-grid{grid-template-columns:1fr}}
