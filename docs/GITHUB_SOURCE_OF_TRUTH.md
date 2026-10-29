@@ -3,7 +3,7 @@
 ## Confirmed architecture
 - Repository: `ifeoluwamorakinyojames-gif/Crest-law-firm-`
 - Website: static one-page HTML + CSS + JavaScript.
-- No Sanity CMS, administrator portal, database, or hosted edit interface.
+- No Sanity or separate database. An optional branded `/admin/` Decap CMS editor saves structured content to GitHub.
 - All changes, including text, layout, images, SEO, and links, must be made and tracked in GitHub.
 - Current branches: `main` (release baseline), `develop` (integration and staging), `feature/*` (new work).
 
@@ -35,10 +35,15 @@ Use `http://localhost:8000` to review the local site.
 Validate with:
 ```bash
 python3 scripts/check_site.py
+python3 scripts/check_admin.py
 node --check script.js
+node --check content-loader.js
 ```
 
 ## Images, security, and go-live
 The original lawyer photographs should not be committed to this currently public repository without authorization. The temporary staging image URLs are external to GitHub and should be migrated to approved repo assets when privacy and rights are confirmed. The site is configured `noindex,nofollow` during development.
 
 Never edit the hosted deployment directly, upload secrets to GitHub, merge to `main`, change DNS, or connect the official production domain without explicit authorization from the firm.
+
+## GitHub-backed content administration
+The `/admin/` interface edits `content/*.json` directly in GitHub through Decap CMS; publishing follows GitHub pull request review. OAuth login requires an approved separate provider and is not yet live. Instructions: `docs/ADMIN_SETUP.md`.
