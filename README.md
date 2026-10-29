@@ -1,23 +1,45 @@
-# Crest Crown Attorneys — Website Development
+# Crest Crown Attorneys — Static Landing Page
 
-This repository is the dedicated development workspace for the Crest Crown Attorneys website.
+**Project:** Crest Crown Attorneys, Effurun, Delta State, Nigeria.
 
-**Current state:** Initial development configuration only. The complete site source, official logo and portraits are intentionally not included while the repository remains public.
+This is a **single-page static website**, built with semantic HTML, responsive CSS and minimal vanilla JavaScript. **No Sanity, CMS, database, login or backend.**
 
-## Workflow
-- `main` — release baseline; never deploy automatically.
-- `develop` — integration branch for reviewed features.
-- `feature/*` — Codex and gStack task branches. Create pull requests into `develop`.
+## Landing page sections
+Home/hero → About the Firm → Legal Practice Areas → Legal Team → Legal Education → Contact.
 
-## Setup
-1. Change repository visibility to **Private** in GitHub Settings → General → Danger Zone → Change repository visibility.
-2. Follow `docs/GSTACK_CODEX_SETUP.md` to configure Codex and gStack locally.
-3. Add the existing website project on a reviewed feature branch after confirming repository privacy and checking for secrets.
-4. Run the PR checks; obtain Counsel's approval before any official production release.
+## Local preview
+Clone the repository, switch to `feature/one-page-landing-site`, then run:
+```bash
+python3 -m http.server 8000
+```
+Visit http://localhost:8000/ in your browser. Or open `index.html` directly.
 
-## Project scope
-Modern Nigerian law-firm website with Home, About, Our Team, practice-area pages, Legal Insights, consultation enquiry, contact and legal notices. Verified content, an authenticated CMS and legal-content approval are requirements for production.
+## Official content and assets
+- Official business name: Crest Crown Attorneys
+- Founder and Principal Counsel: Eloho Avwaruroro-Okoye, Esq.
+- Legal Associate: Glory Toritseju Kunu
+- Phone and WhatsApp: 08063914606
+- Email: crestcrownattorneys@gmail.com
+- Office: Urhumarho Junction, Off Effurun-Sapele Road, Effurun, Delta State
+- Hours: Monday–Friday 8am–6pm; Saturday 10am–4pm
 
-**Current development preview:** https://crest-crown-attorneys-website-preview-kmw62k.v2.appdeploy.ai/
+**Media note:** For this public development branch, the logo and professional portraits are linked to the existing publicly accessible staging-site media URLs, and not embedded as assets. Once the repository has been made private and the firm authorizes it, copy the assets into a local `assets/` folder and replace those temporary links.
 
-The preview is separate from this repository and **no automatic deployment is configured**.
+## Architecture and accessibility
+- Every website section is a same-page anchor, not a separate route.
+- Direct contact through WhatsApp, email or phone; no data is stored.
+- JSON-LD LegalService structured data with supplied firm details.
+- Keyboard accessible mobile navigation and disclosures.
+- SEO-oriented HTML headings and page copy.
+- `noindex,nofollow` remains active until Counsel approves publication.
+
+## Development workflow
+Use feature branches and PRs into `develop`. See `AGENTS.md` and `docs/GSTACK_CODEX_SETUP.md`. No automatic deployment is configured; production-domain access remains separate.
+
+## Run checks
+```bash
+python3 scripts/check_site.py
+node --check script.js
+```
+
+**Approval required:** Counsel should verify all legal service descriptions, lawyer titles and qualifications, regulatory terminology, and public content before launch.
