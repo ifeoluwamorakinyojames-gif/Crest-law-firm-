@@ -19,8 +19,10 @@ function setText(selector, value, root = document) {
 function safeImage(value) {
   const url = String(value || '').trim();
   if (url.startsWith('https://')) return url;
-  if (/^\/?media\/uploads\/[a-zA-Z0-9/_\-.]+$/.test(url) && !url.includes('..')) {
-    return './' + url.replace(/^\//, '');
+  // Decap's GitHub Pages project URL includes /Crest-law-firm-/.
+  const localMedia = url.replace(/^\/Crest-law-firm\//, '/').replace(/^\//, '');
+  if (/^media\/uploads\/[a-zA-Z0-9/_\-.]+$/.test(localMedia) && !localMedia.includes('..')) {
+    return './' + localMedia;
   }
   return '';
 }
