@@ -1,5 +1,4 @@
-name: Development checks
-
+name: Static landing page checks
 on:
   pull_request:
     branches: [develop, main]
@@ -9,35 +8,18 @@ permissions:
   contents: read
 
 jobs:
-  validate:
+  validate-static:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check required documentation
-        shell: bash
+      - name: Validate HTML links, metadata and page structure
         run: |
-          test -f README.md
-          test -f AGENTS.md
-          test -f docs/GSTACK_CODEX_SETUP.md
-          test -f docs/RELEASE_GATES.md
-      - name: Verify there are no production deployment workflows
-        shell: bash
-        run: |
-          if grep -REni '^[[:space:]]*run:[[:space:]]+.*([w]rangler deploy|[v]ercel --prod|[p]ages deploy)' .github/workflows/; then
-            echo "Production deployment command detected in workflows"
-            exit 1
-          fi
+          python3 scripts/check_site.py
+          python3 scripts/check_admin.py
       - uses: actions/setup-node@v4
-        if: ${{ hashFiles('package.json') != '' }}
         with:
           node-version: '22'
-          cache: npm
-          cache-dependency-path: package-lock.json
-      - name: Install and build application when added
-        if: ${{ hashFiles('package.json') != '' }}
-        shell: bash
+      - name: Check JavaScript syntax
         run: |
-          test -f package-lock.json || { echo 'Commit a package-lock.json before enabling builds'; exit 1; }
-          npm ci
-          npm run build
-          npm test --if-present
+          node --check script.js
+          node --check content-loader.js

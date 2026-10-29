@@ -1,0 +1,57 @@
+{
+  "heading": "Meet Our Legal Team",
+  "intro": "Legal practitioners committed to responsible, client-focused professional service.",
+  "people": [
+    {
+      "name": "Eloho Avwaruroro-Okoye, Esq.",
+      "role": "Founder & Principal Counsel",
+      "photo": "https://crest-crown-attorneys-website-preview-kmw62k.v2.appdeploy.ai/resources/eloho-portrait.jpg",
+      "bio": "A Nigerian legal practitioner with over seven years of experience, including five years practising at Kunle Edun (SAN) & Partners. Eloho leads the firm with a focus on practical, client-centred legal services.",
+      "education": [],
+      "memberships": [],
+      "accreditations": [],
+      "specialisations": [
+        "Corporate Law & Regulatory Compliance",
+        "CAC registration for businesses, companies, schools, churches, associations and NGOs",
+        "Annual Returns and Post-Incorporation Services",
+        "NAFDAC, SCUML, Tax Compliance, NSITF and Regulatory Certifications",
+        "Family Law: Divorce, Child Custody & Child Welfare",
+        "Property & Real Estate Law",
+        "Maritime Law",
+        "Debt Recovery & Recovery of Premises",
+        "Litigation & Dispute Resolution"
+      ],
+      "professionalBackground": "Over seven years of legal practice, including five years at Kunle Edun (SAN) & Partners.",
+      "initiatives": "The Legal Minutes with Eloho; Eloho Aro Reaching Out Foundation (EAROF), founded in 2018."
+    },
+    {
+      "name": "Glory Toritseju Kunu",
+      "role": "Legal Associate | Corporate Practice & Property Law",
+      "photo": "https://crest-crown-attorneys-website-preview-kmw62k.v2.appdeploy.ai/resources/glory-kunu.jpg",
+      "bio": "Glory focuses on corporate practice, commercial and property law, including company formation, CAMA compliance, title searches, property due diligence and agreements.",
+      "education": [
+        {
+          "degree": "B.L",
+          "institution": "Nigerian Law School, Abuja"
+        },
+        {
+          "degree": "LL.B",
+          "institution": "Ambrose Alli University"
+        }
+      ],
+      "memberships": [
+        "Nigerian Bar Association (NBA), Warri Branch"
+      ],
+      "accreditations": [
+        "CAC Accredited Agent"
+      ],
+      "specialisations": [
+        "Corporate Practice and Regulatory Compliance",
+        "Commercial Law",
+        "Property & Real Estate Law"
+      ],
+      "professionalBackground": "",
+      "initiatives": ""
+    }
+  ]
+}

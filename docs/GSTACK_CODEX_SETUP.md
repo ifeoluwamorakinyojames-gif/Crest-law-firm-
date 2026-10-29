@@ -1,24 +1,28 @@
-# Codex + gStack local setup
+# Codex + gStack for the static Crest Crown landing page
 
-Repository: https://github.com/ifeoluwamorakinyojames-gif/Crest-law-firm-
+This project has one public landing-page route. There is **no Sanity or content database**; a Decap CMS admin interface backed by GitHub has been added. No production deployment integration exists.
 
-## 1. Protect the repository first
-The repository was publicly visible when this workflow was initialized. Before committing the full app or client media, in GitHub open **Settings → General → Danger Zone → Change repository visibility → Make private**. Verify that the new visibility says Private.
-
-## 2. Clone and switch to the integration branch
+## 1. Branch workflow
 ```bash
 git clone https://github.com/ifeoluwamorakinyojames-gif/Crest-law-firm-.git
 cd Crest-law-firm-
 git fetch origin
 git switch develop
-git switch -c feature/website-source-import
+git switch -c feature/my-change
 ```
 
-## 3. Install prerequisites
-Install Git, Node.js LTS, Bun as required by your gStack release, and a signed-in Codex CLI. On Windows, use Git Bash for shell scripts. Verify installation against the current upstream README.
+## 2. Local preview and QA
+```bash
+python3 -m http.server 8000
+python3 scripts/check_site.py
+python3 scripts/check_admin.py
+node --check script.js
+node --check content-loader.js
+```
 
-## 4. Install gStack into Codex
-The gStack repository is a separate tool, not a copy of this app:
+## 3. Codex + gStack
+Install Codex and prerequisite Git/Node/Bun as required by the current gStack README. On Windows use Git Bash for shell scripts.
+
 ```bash
 git clone --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/gstack
 cd ~/gstack
@@ -26,26 +30,25 @@ cd ~/gstack
 ```
 Source: https://github.com/garrytan/gstack
 
-Restart Codex if necessary. Ask the assistant to use `gstack-office-hours` or its available gStack skill names in Codex. Invoke planning, engineering review, UI review, security, QA and ship steps according to the project's needs. Availability can change by gStack version.
+Run only the relevant available specialist skills for planning, design review, review, security and QA. Do not run production release commands.
 
-## 5. Add website source safely
-After private visibility has been verified, bring the existing website files into your feature branch. The AppDeploy preview source currently lives separately at:
-https://crest-crown-attorneys-website-preview-kmw62k.v2.appdeploy.ai/
+## 4. Pull requests
+Push changes to your feature branch and open a PR targeting `develop`. No automatic production deployment exists. Review the release gates before any eventual launch.
 
-Do not blindly overwrite newer changes. Compare the most recent source snapshot (including the legal-team qualifications and specialisation refactor) against any starter package. Keep client images out of commits until the firm authorizes their repository use.
+## 5. Security
+The repository was publicly visible during initialization. Do not commit sensitive client documents or original portrait images until it is private and approved.
 
-## 6. Validate and open pull request
-```bash
-npm ci
-npm run build
-npm test --if-present
-git add .
-git commit -m "feat: import Crest Crown development website"
-git push -u origin feature/website-source-import
-```
-Open a PR into `develop`, not `main`.
+## GitHub-only staging preview
+The GitHub Pages preview workflow lives in `.github/workflows/pages-preview.yml`. It listens only to pushes to `develop`.
 
-## 7. Release policy
-- GitHub Actions only tests builds and PRs.
-- No Cloudflare API token, Vercel production token or AppDeploy production key should be added.
-- Production release is a separate client-authorized milestone after passing `docs/RELEASE_GATES.md`.
+1. Open the repo's **Settings → Pages** and select **GitHub Actions** as the build/deployment source.
+2. Review PR changes and passing checks, then merge into `develop`.
+3. GitHub Actions packages the static site, admin, image uploads and content JSON and deploys the preview to GitHub Pages.
+4. Find the actual staging URL from the successful workflow's `github-pages` environment. Do not assume a URL is live until GitHub confirms deployment.
+
+Never put a `CNAME` file, custom domain, or production token in this workflow. Do not publish `main` automatically. Existing images are temporarily loaded from public staging media until authorized local assets are added.
+
+See `docs/GITHUB_SOURCE_OF_TRUTH.md`.
+
+## Admin workflow
+Website edits made through `/admin/` are GitHub commits and pull requests, not direct server modifications. A trusted GitHub OAuth provider is required before editor login is available. See `docs/ADMIN_SETUP.md`.

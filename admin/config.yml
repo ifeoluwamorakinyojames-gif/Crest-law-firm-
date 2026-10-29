@@ -1,0 +1,146 @@
+# Crest Crown Attorneys — GitHub-backed Decap CMS
+# GitHub is the only content database. No Sanity, SQL or CMS database.
+# IMPORTANT: A trusted GitHub OAuth proxy or hosted auth service must be configured
+# before login works on GitHub Pages. Set backend.base_url to that HTTPS endpoint.
+backend:
+  name: github
+  repo: ifeoluwamorakinyojames-gif/Crest-law-firm-
+  branch: develop
+  # base_url: https://YOUR-APPROVED-GITHUB-OAUTH-PROXY.example.com
+  auth_endpoint: auth
+
+publish_mode: editorial_workflow
+
+# Media added from the editor is committed to this same GitHub repository.
+media_folder: media/uploads
+public_folder: /Crest-law-firm-/media/uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  - name: "site"
+    label: "Website & Firm Information"
+    files:
+      - label: "Homepage, About, Contact & SEO"
+        name: "settings"
+        file: "content/site.json"
+        format: "json"
+        fields:
+          - { label: "Official Firm Name", name: "name", widget: "string" }
+          - { label: "Brand Tagline", name: "tagline", widget: "string" }
+          - { label: "Official Logo", name: "logo", widget: "image", required: false }
+          - label: "Homepage Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Headline (new line per phrase)", name: "headline", widget: "text" }
+              - { label: "Highlighted Headline Line (1, 2, 3)", name: "highlightLine", widget: "number", value_type: "int", min: 1, max: 5 }
+              - { label: "Hero Description", name: "description", widget: "text" }
+              - { label: "Primary Button", name: "primaryButton", widget: "string" }
+              - { label: "Secondary Button", name: "secondaryButton", widget: "string" }
+          - label: "About The Firm"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "About Paragraphs", name: "body", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - { label: "Firm Values", name: "values", widget: "list", field: { label: "Value", name: "value", widget: "string" } }
+          - label: "Legal Education Block"
+            name: "insights"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Description", name: "body", widget: "text" }
+              - { label: "Highlighted Message", name: "quote", widget: "text" }
+              - { label: "Disclaimer", name: "disclaimer", widget: "text" }
+          - label: "Official Office & Contact Details"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Phone Number (local)", name: "phone", widget: "string" }
+              - { label: "WhatsApp (country code, numbers only)", name: "whatsapp", widget: "string" }
+              - { label: "Official Email", name: "email", widget: "string" }
+              - { label: "Office Address", name: "address", widget: "text" }
+              - { label: "Weekday Opening Hours", name: "hoursWeekdays", widget: "string" }
+              - { label: "Saturday Opening Hours", name: "hoursSaturday", widget: "string" }
+          - label: "Search & Sharing Settings"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string" }
+              - { label: "Meta Description", name: "description", widget: "text" }
+              - { label: "Prevent Search Indexing (keep on for staging)", name: "noindex", widget: "boolean", default: true }
+  - name: "practices"
+    label: "Practice Areas"
+    files:
+      - label: "Services & Practice Areas"
+        name: "services"
+        file: "content/practices.json"
+        format: "json"
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string" }
+          - { label: "Introductory Text", name: "intro", widget: "text" }
+          - label: "Legal Services"
+            name: "services"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Service Name", name: "title", widget: "string" }
+              - { label: "Short Description", name: "description", widget: "text" }
+          - { label: "Regulatory Services Note", name: "note", widget: "text", required: false }
+  - name: "team"
+    label: "Legal Team"
+    files:
+      - label: "Lawyer Profiles & Qualifications"
+        name: "people"
+        file: "content/team.json"
+        format: "json"
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string" }
+          - { label: "Team Introduction", name: "intro", widget: "text" }
+          - label: "Legal Practitioners"
+            name: "people"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - { label: "Full Professional Name", name: "name", widget: "string" }
+              - { label: "Firm Role / Title", name: "role", widget: "string" }
+              - { label: "Professional Photograph", name: "photo", widget: "image", required: false }
+              - { label: "Professional Biography", name: "bio", widget: "text" }
+              - label: "Academic Qualifications"
+                name: "education"
+                widget: "list"
+                required: false
+                summary: "{{fields.degree}} — {{fields.institution}}"
+                fields:
+                  - { label: "Qualification (e.g. B.L)", name: "degree", widget: "string" }
+                  - { label: "Institution", name: "institution", widget: "string" }
+              - { label: "Professional Memberships", name: "memberships", widget: "list", required: false, field: { label: "Membership", name: "membership", widget: "string" } }
+              - { label: "Accreditations", name: "accreditations", widget: "list", required: false, field: { label: "Accreditation", name: "accreditation", widget: "string" } }
+              - { label: "Areas of Specialisation", name: "specialisations", widget: "list", required: false, field: { label: "Specialisation", name: "specialisation", widget: "string" } }
+              - { label: "Professional Background", name: "professionalBackground", widget: "text", required: false }
+              - { label: "Initiatives and Community Work", name: "initiatives", widget: "text", required: false }
+  - name: "articles"
+    label: "Legal Insights"
+    files:
+      - label: "Articles Shown on Landing Page"
+        name: "posts"
+        file: "content/articles.json"
+        format: "json"
+        fields:
+          - label: "Legal Articles"
+            name: "articles"
+            widget: "list"
+            required: false
+            summary: "{{fields.title}} ({{fields.status}})"
+            fields:
+              - { label: "Article Title", name: "title", widget: "string" }
+              - { label: "Article Summary", name: "summary", widget: "text" }
+              - { label: "Author / Responsible Lawyer", name: "author", widget: "string" }
+              - { label: "Publication Status", name: "status", widget: "select", options: ["draft", "review", "published"], default: "draft" }
+              - { label: "Publish Date", name: "date", widget: "datetime", required: false, date_format: "YYYY-MM-DD", time_format: false }
