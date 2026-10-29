@@ -2,13 +2,13 @@
 
 **Project:** Crest Crown Attorneys, Effurun, Delta State, Nigeria.
 
-This is a **single-page static website**, built with semantic HTML, responsive CSS and minimal vanilla JavaScript. **No Sanity, CMS, database, login or backend.**
+This is a **single-page static website**, built with semantic HTML, responsive CSS and minimal vanilla JavaScript. **No Sanity or application database.** A branded Decap CMS editor at `/admin/` proposes GitHub-backed content changes; GitHub OAuth setup is still required.
 
 ## Landing page sections
 Home/hero → About the Firm → Legal Practice Areas → Legal Team → Legal Education → Contact.
 
 ## Local preview
-Clone the repository, switch to `feature/one-page-landing-site`, then run:
+Clone the repository and switch to `feature/github-admin-decap` for the pending admin feature branch, then run:
 ```bash
 python3 -m http.server 8000
 ```
@@ -38,7 +38,7 @@ Visit http://localhost:8000/ in your browser. Or open `index.html` directly.
 
 - No direct code changes in AppDeploy or any hosting dashboard.
 - No automatic deployment of `main` or the firm's official domain.
-- Preview uses static `index.html`, `styles.css`, and `script.js` from this GitHub repository.
+- Preview uses static `index.html`, `styles.css`, `script.js`, `content-loader.js`, `content/*.json`, and `admin/` from GitHub.
 - The preview is still `noindex,nofollow` until Counsel authorizes publication.
 
 See `docs/GITHUB_SOURCE_OF_TRUTH.md`, `AGENTS.md`, and `docs/GSTACK_CODEX_SETUP.md` for instructions.
@@ -46,7 +46,13 @@ See `docs/GITHUB_SOURCE_OF_TRUTH.md`, `AGENTS.md`, and `docs/GSTACK_CODEX_SETUP.
 ## Run checks
 ```bash
 python3 scripts/check_site.py
+python3 scripts/check_admin.py
 node --check script.js
+node --check content-loader.js
 ```
 
 **Approval required:** Counsel should verify all legal service descriptions, lawyer titles and qualifications, regulatory terminology, and public content before launch.
+
+## Editing website content
+
+The landing page reads editable JSON from `content/`. Authorized lawyers will be able to propose changes through Decap CMS at `/admin/` once a secure GitHub OAuth provider has been configured. Editorial workflow sends drafts for review before merging to `develop`. See [Admin setup](docs/ADMIN_SETUP.md). Do not place a GitHub access token in the public site.
