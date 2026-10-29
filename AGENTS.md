@@ -7,7 +7,10 @@ Build and maintain **one responsive static landing page**. Do not introduce Sani
 Plain HTML5, CSS3 and minimal JavaScript. Source files: `index.html`, `styles.css`, `script.js`. QA: `scripts/check_site.py`. Avoid unnecessary dependencies and packages.
 
 ## Workflow
+- GitHub repository `ifeoluwamorakinyojames-gif/Crest-law-firm-` is the authoritative source for **all** website edits.
+- Do not edit the source on AppDeploy or any hosting dashboard: all changes must be reviewed commits in this repository.
 - Branch from `develop` to `feature/*`. PRs target `develop`.
+- After PR review and CI, merges to `develop` can publish **GitHub Pages staging only**, once enabled in Settings → Pages.
 - Do not merge to `main` or deploy to a production domain without separate authorization.
 - Keep legal content supplied by Counsel distinct from editorial drafts.
 - Eloho is Founder & Principal Counsel. Glory is a Legal Associate, not a partner unless specifically confirmed.
