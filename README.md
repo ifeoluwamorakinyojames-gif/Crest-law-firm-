@@ -33,8 +33,15 @@ Visit http://localhost:8000/ in your browser. Or open `index.html` directly.
 - SEO-oriented HTML headings and page copy.
 - `noindex,nofollow` remains active until Counsel approves publication.
 
-## Development workflow
-Use feature branches and PRs into `develop`. See `AGENTS.md` and `docs/GSTACK_CODEX_SETUP.md`. No automatic deployment is configured; production-domain access remains separate.
+## GitHub-first development and staging
+**GitHub is the only source of truth for website changes.** Every change is committed on a `feature/*` branch, checked in a pull request, then integrated into `develop`. A GitHub Pages Actions workflow will publish the staging preview from `develop` when GitHub Pages is configured in repository settings.
+
+- No direct code changes in AppDeploy or any hosting dashboard.
+- No automatic deployment of `main` or the firm's official domain.
+- Preview uses static `index.html`, `styles.css`, and `script.js` from this GitHub repository.
+- The preview is still `noindex,nofollow` until Counsel authorizes publication.
+
+See `docs/GITHUB_SOURCE_OF_TRUTH.md`, `AGENTS.md`, and `docs/GSTACK_CODEX_SETUP.md` for instructions.
 
 ## Run checks
 ```bash
