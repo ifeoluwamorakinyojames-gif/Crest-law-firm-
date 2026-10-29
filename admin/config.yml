@@ -13,7 +13,7 @@ publish_mode: editorial_workflow
 
 # Media added from the editor is committed to this same GitHub repository.
 media_folder: media/uploads
-public_folder: /media/uploads
+public_folder: /Crest-law-firm-/media/uploads
 
 slug:
   encoding: ascii
