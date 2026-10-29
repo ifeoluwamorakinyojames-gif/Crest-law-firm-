@@ -13,4 +13,9 @@
 - [ ] Official domain, privacy/disclaimer content, and removal of noindex approved
 - [ ] Backup and rollback prepared, with explicit go-live authorization
 
-No CMS, user login, database, server-side appointment system or blog publishing is included in the approved landing-page scope.
+Decap CMS provides GitHub-backed editing only; there is no separate content database, public user registration or backend appointment system. OAuth, editor permissions, approvals and end-to-end changes must be verified before publishing.
+
+- [ ] OAuth authentication uses a trusted provider and no browser-exposed secrets
+- [ ] Admin changes create GitHub review branches or pull requests
+- [ ] GitHub Pages updates the public landing page after an approved merge
+- [ ] Legal articles appear only when marked published and approved by Counsel
