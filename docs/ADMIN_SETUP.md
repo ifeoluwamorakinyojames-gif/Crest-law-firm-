@@ -51,7 +51,7 @@ After GitHub Pages is enabled, open the verified staging URL with `/admin/` appe
 - The public landing page remains `noindex,nofollow` on staging.
 - Content fields are rendered with DOM `textContent` to avoid inserting arbitrary HTML.
 - Do not collect client files or confidential case material through this landing page.
-- Images uploaded through Decap are committed into `media/uploads/` in GitHub. Obtain consent before publishing portraits or internal images.
+- Images uploaded through Decap are committed into `media/uploads/` in GitHub. Obtain consent before publishing portraits or internal images. The public media URL uses `/Crest-law-firm-/media/uploads/` on the GitHub Pages project preview; adjust this prefix during any approved future custom-domain launch.
 
 ## Release status
 
