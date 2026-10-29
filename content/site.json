@@ -1,0 +1,46 @@
+{
+  "name": "Crest Crown Attorneys",
+  "tagline": "LAW · JUSTICE · RESULTS",
+  "logo": "https://crest-crown-attorneys-website-preview-kmw62k.v2.appdeploy.ai/resources/crest-crown-logo.jpg",
+  "hero": {
+    "eyebrow": "A COMMITMENT TO EXCELLENCE",
+    "headline": "Your Interests.\nOur Commitment.\nLegal Excellence.",
+    "highlightLine": 2,
+    "description": "Practical legal guidance, thoughtful representation and clear counsel for individuals, businesses and corporate organisations in Nigeria.",
+    "primaryButton": "Request a Consultation",
+    "secondaryButton": "Our Practice Areas"
+  },
+  "about": {
+    "eyebrow": "ABOUT THE FIRM",
+    "heading": "Professional counsel. Human understanding.",
+    "body": [
+      "Crest Crown Attorneys is a Nigerian law firm serving individuals, entrepreneurs and corporate organisations from Effurun, Delta State.",
+      "Led by Founder and Principal Counsel Eloho Avwaruroro-Okoye, Esq., the firm combines legal knowledge, practical advice and a professional commitment to its clients."
+    ],
+    "values": [
+      "Client-centred representation",
+      "Practical legal solutions",
+      "Integrity and professionalism"
+    ]
+  },
+  "insights": {
+    "eyebrow": "LEGAL EDUCATION",
+    "heading": "Making the law easier to understand.",
+    "body": "Through The Legal Minutes with Eloho, the firm's Founder and Principal Counsel shares public legal education about everyday rights, responsibilities and legal matters.",
+    "quote": "Legal knowledge should empower individuals and organisations to make informed decisions.",
+    "disclaimer": "General educational material is not a substitute for legal advice tailored to individual circumstances."
+  },
+  "contact": {
+    "phone": "08063914606",
+    "whatsapp": "2348063914606",
+    "email": "crestcrownattorneys@gmail.com",
+    "address": "Urhumarho Junction, Off Effurun-Sapele Road, Effurun, Delta State, Nigeria",
+    "hoursWeekdays": "Monday–Friday: 8 AM–6 PM",
+    "hoursSaturday": "Saturday: 10 AM–4 PM"
+  },
+  "seo": {
+    "title": "Crest Crown Attorneys | Law · Justice · Results",
+    "description": "Crest Crown Attorneys offers professional legal guidance in corporate, property, family and dispute-related law in Effurun, Delta State, Nigeria.",
+    "noindex": true
+  }
+}
