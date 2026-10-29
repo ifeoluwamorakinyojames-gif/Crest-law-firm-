@@ -35,11 +35,14 @@ jobs:
         run: |
           python3 scripts/check_site.py
           node --check script.js
+          node --check content-loader.js
 
       - name: Package single-page website
         run: |
           mkdir -p _site
-          cp index.html styles.css script.js _site/
+          cp index.html styles.css script.js content-loader.js _site/
+          cp -R content admin _site/
+          if [ -d media ]; then cp -R media _site/; fi
           touch _site/.nojekyll
 
       - name: Configure GitHub Pages
