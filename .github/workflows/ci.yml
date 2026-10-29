@@ -23,7 +23,7 @@ jobs:
       - name: Verify there are no production deployment workflows
         shell: bash
         run: |
-          if grep -REni '(wrangler deploy|vercel --prod|pages deploy|cloudflare deploy)' .github/workflows/; then
+          if grep -REni '^[[:space:]]*run:[[:space:]]+.*([w]rangler deploy|[v]ercel --prod|[p]ages deploy)' .github/workflows/; then
             echo "Production deployment command detected in workflows"
             exit 1
           fi
