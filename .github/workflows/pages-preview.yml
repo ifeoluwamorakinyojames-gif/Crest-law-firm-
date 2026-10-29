@@ -34,6 +34,7 @@ jobs:
       - name: Validate static website
         run: |
           python3 scripts/check_site.py
+          python3 scripts/check_admin.py
           node --check script.js
           node --check content-loader.js
 
