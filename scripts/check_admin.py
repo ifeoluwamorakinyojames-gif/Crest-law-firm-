@@ -42,7 +42,9 @@ assert 'OAuth' in read('admin/index.html')
 assert 'cp -R content admin _site/' in workflow
 assert "github.ref == 'refs/heads/develop'" in workflow
 assert 'noindex,nofollow' in html and "noindex,nofollow" in loader
-assert 'base_url: https://YOUR-' in admin, 'OAuth provider must be explicitly configured'
+assert ('name: github' in admin and 'repo: ifeoluwamorakinyojames-gif/Crest-law-firm-' in admin), 'GitHub CMS backend must target this repository'
+assert ('# base_url: https://YOUR-' in admin or 'base_url: https://' in admin), 'OAuth configuration must be documented or use HTTPS'
+assert 'GITHUB_CLIENT_SECRET:' not in admin, 'Do not commit any GitHub OAuth secret'
 assert 'SECRET' not in loader and 'GITHUB_TOKEN' not in loader
 
 class Parser(HTMLParser):
