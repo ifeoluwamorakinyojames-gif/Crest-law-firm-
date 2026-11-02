@@ -210,3 +210,23 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #ea
 .details-inner .professional-specialisations{padding-left:18px;margin:7px 0}
 .details-inner .professional-specialisations li{line-height:1.75;margin-bottom:5px}
 @media(max-width:860px){.landing-articles-grid{grid-template-columns:1fr}}
+
+/* Audit improvements: three verified team profiles, usable service actions. */
+.team-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.team-card{min-width:0}
+.team-body{padding:23px}
+.team-body h3{font-size:clamp(21px,2vw,26px);overflow-wrap:anywhere}
+.portrait{height:350px;display:flex;align-items:center;justify-content:center}
+.portrait-fallback{font:700 64px Georgia,serif;color:#e6ba62}
+.practice-card .mini-link{display:block;margin-top:auto}
+.practice-card .mini-link:hover,.practice-card .mini-link:focus-visible{color:#654819;text-decoration:underline}
+.footer a:focus-visible,.contact-panel a:focus-visible{outline:3px solid #dcb367;outline-offset:4px}
+.legal-page{padding:60px 0 80px;max-width:850px}
+.legal-page h1{font-size:clamp(2.1rem,4vw,3.2rem)}
+.legal-page h2{font-size:clamp(1.25rem,2.3vw,1.65rem);margin-top:35px}
+.legal-page p,.legal-page li{font-size:14px;line-height:1.8;color:#354d64}
+.legal-draft-notice{padding:20px;background:#fff4dd;border-left:4px solid #ab7a29;margin:26px 0}
+.legal-nav{background:var(--navy);padding:18px 0;color:white}
+.legal-nav a{color:#f1cb83;font-weight:700}
+@media(max-width:1050px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:710px){.team-grid{grid-template-columns:1fr}.portrait{height:390px}}

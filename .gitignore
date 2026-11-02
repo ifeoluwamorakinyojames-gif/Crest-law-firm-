@@ -7,3 +7,7 @@ dist/
 .DS_Store
 coverage/
 *.log
+
+.lighthouseci/
+.lighthouseci-reports/
+_audit_site/

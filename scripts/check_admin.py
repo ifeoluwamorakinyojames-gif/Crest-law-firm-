@@ -23,7 +23,8 @@ assert site['name']=='Crest Crown Attorneys'
 assert site['contact']['email']=='crestcrownattorneys@gmail.com'
 assert 'wa.me' in html and 'wa.me' in loader
 assert len(services['services']) >= 5, 'Required legal practice areas missing'
-assert len(team['people'])>=2, 'Both confirmed practitioners are required'
+assert len(team['people'])>=3, 'All three confirmed practitioners are required'
+assert any(p['name']=='Ejeremedoghene Ejiroghene' and 'Family Law' in p['specialisations'] for p in team['people']), 'Family Law profile missing'
 assert team['people'][0]['role']=='Founder & Principal Counsel'
 assert team['people'][1]['role'].startswith('Legal Associate')
 assert any(e['degree']=='B.L' for e in team['people'][1]['education'])
@@ -32,6 +33,9 @@ assert not team['people'][0]['education'], 'Do not invent Eloho academic credent
 assert all('title' in p and 'description' in p for p in services['services'])
 assert all('name' in p and 'bio' in p for p in team['people'])
 assert all(p.get('status') in ('draft','review','published') for p in posts['articles'])
+assert all(p.get('status') != 'published' or p.get('legalReviewed') is True for p in posts['articles']), 'Articles must receive Counsel review before publication'
+assert "a.legalReviewed === true" in loader, 'Renderer must filter out unapproved articles'
+assert 'name: "legalReviewed"' in admin, 'CMS legal review field is required'
 assert 'content-loader.js' in html
 assert "fetch('./content/'" in loader, 'Landing page must read GitHub-managed content'
 assert 'scripts/check_admin.py' not in admin
