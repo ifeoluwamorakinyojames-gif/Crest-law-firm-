@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#071e3b">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Account Security | Crest Crown Attorneys</title>
+  <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+  <header class="crest-admin-header">
+    <div class="crest-admin-mark" aria-hidden="true">⚖</div>
+    <div>
+      <strong>CREST CROWN ATTORNEYS</strong>
+      <span>ACCOUNT SECURITY</span>
+    </div>
+    <nav class="crest-admin-links" aria-label="Administration links">
+      <a href="./">Back to admin</a>
+      <a href="../">View website</a>
+    </nav>
+  </header>
+  <main class="crest-account">
+    <p class="crest-account-eyebrow">ADMINISTRATOR ACCESS</p>
+    <h1>Manage your account password</h1>
+    <p>
+      This website's Decap CMS uses individual GitHub accounts to authorize
+      content edits. Your password is managed securely by GitHub, not by this
+      website or its public source code.
+    </p>
+    <section class="crest-account-card" aria-labelledby="password-heading">
+      <h2 id="password-heading">Change your GitHub password</h2>
+      <p>
+        Sign in to the GitHub account that has edit permission for Crest Crown
+        Attorneys. In GitHub's <strong>Password and authentication</strong>
+        settings, enter your current password and a strong replacement.
+      </p>
+      <a class="crest-account-button" href="https://github.com/settings/security"
+         target="_blank" rel="noopener noreferrer">
+        Open GitHub password settings <span aria-hidden="true">↗</span>
+      </a>
+      <p class="crest-account-help">
+        Password changes take place only on GitHub. We never ask you to type a
+        password on this page, and this website does not store passwords.
+      </p>
+    </section>
+    <section class="crest-account-card" aria-labelledby="access-heading">
+      <h2 id="access-heading">Protect administrator access</h2>
+      <ul>
+        <li>Use a unique password and enable two-factor authentication.</li>
+        <li>Give each administrator their own GitHub account and appropriate repository permissions.</li>
+        <li>Do not reuse an initial shared password or put it in source code or browser storage.</li>
+        <li>Keep publication approval with an authorized reviewer.</li>
+      </ul>
+    </section>
+    <div class="crest-account-notice" role="note">
+      <strong>Development status:</strong> The Decap CMS GitHub OAuth integration
+      still needs its approved authentication service configured. Changing
+      your GitHub account password does not enable the CMS by itself.
+      <a href="https://github.com/ifeoluwamorakinyojames-gif/Crest-law-firm-/blob/develop/docs/ADMIN_SETUP.md"
+         target="_blank" rel="noopener noreferrer">Read setup instructions</a>.
+    </div>
+  </main>
+</body>
+</html>

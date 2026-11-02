@@ -2,6 +2,8 @@
 # GitHub is the only content database. No Sanity, SQL or CMS database.
 # IMPORTANT: A trusted GitHub OAuth proxy or hosted auth service must be configured
 # before login works on GitHub Pages. Set backend.base_url to that HTTPS endpoint.
+# Authentication and password changes are managed by individual GitHub accounts.
+# No shared site-wide password or default password is embedded in this public repository.
 backend:
   name: github
   repo: ifeoluwamorakinyojames-gif/Crest-law-firm-

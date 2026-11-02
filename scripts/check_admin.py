@@ -67,3 +67,14 @@ p=Parser()
 p.feed(html)
 assert all(a in p.ids for a in p.anchors), 'Broken in-page navigation'
 print('PASS: GitHub-backed admin fields, lawyer credentials, SEO, publication workflow and asset packaging')
+
+# Admin accounts use GitHub OAuth: never claim a client-side password is secure.
+security_page=read('admin/security.html')
+admin_page=read('admin/index.html')
+assert 'href="./security.html"' in admin_page, 'Account security link missing in admin'
+assert 'https://github.com/settings/security' in security_page, 'Password settings must link to real account provider'
+assert 'noindex,nofollow' in security_page, 'Admin account page should not be indexed'
+assert '<form' not in security_page and 'type="password"' not in security_page, 'Do not simulate password changes in a public static site'
+assert 'localStorage' not in security_page and 'sessionStorage' not in security_page, 'No password storage in browser'
+assert 'cp -R content admin _site/' in workflow, 'Password management page must be included in staging'
+print('PASS: provider-managed admin password changes without shared embedded credentials')

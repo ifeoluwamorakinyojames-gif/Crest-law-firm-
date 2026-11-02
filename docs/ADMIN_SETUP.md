@@ -56,3 +56,13 @@ After GitHub Pages is enabled, open the verified staging URL with `/admin/` appe
 ## Release status
 
 As of this setup: admin UI, collections, data files, review workflow and staging packaging are committed on `feature/github-admin-decap`. GitHub OAuth is **not configured**; no authorized editor login or end-to-end CMS publishing has been verified. No official domain or `main` branch has been modified.
+
+## Changing an administrator's password
+
+The GitHub Decap CMS backend **does not maintain its own website password**. It uses the password or passkey of each authorized GitHub account through an OAuth sign-in flow. Therefore, a site-wide default password cannot be safely implemented by editing static HTML, CSS or JavaScript.
+
+The admin interface now includes **Account security** (`admin/security.html`), which links authorized editors directly to their own GitHub Password and authentication settings. A password change is completed on GitHub after authenticating with that account; it is not handled by any website form. This is a real password-change path, not a simulated success message.
+
+**For the requested initial credential:** do not hard-code a shared initial password into a public repository or publish it in scripts, CMS configuration or browser storage. If the firm later chooses a **separate website-only password** instead of GitHub sign-in, first implement a proper server-side identity provider with hashed password storage, unique initial enrollment, forced first-use reset, rate limiting, HTTPS, protected sessions and password-reset support. Provision any temporary password through the provider's protected onboarding interface or secret management; never as a committed default. The shared credential discussed in chat should not be deployed as an admin password.
+
+This security page **does not** activate GitHub OAuth or grant repository access. The OAuth setup and editor permissions above still must be completed before anyone can edit content.
