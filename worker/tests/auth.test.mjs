@@ -1,9 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { webcrypto } from 'node:crypto';
 import handler from '../src/index.js';
 
-globalThis.crypto = webcrypto;
 class Store {
   values = new Map();
   async get(key, mode) {
