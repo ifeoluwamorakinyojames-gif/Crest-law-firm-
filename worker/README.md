@@ -40,3 +40,17 @@ The Worker and GitHub Pages staging site are on different domains, so the login 
 The Worker updates the `develop` branch, and GitHub Pages staging deployment from `develop` requires the repository owner to enable GitHub Pages. The current AppDeploy preview is a separate application and is **not** updated by this Worker.
 
 If an authorized administrator loses the password, the owner must perform a protected recovery process on Cloudflare/KV. Simply changing the bootstrap secret does **not** reset a changed password; avoid destructive KV resets without owner verification and backup.
+
+## Optional GitHub Actions activation (prepared, not executed)
+
+The repository includes `.github/workflows/deploy-password-admin.yml` with manual activation using Cloudflare's official `wrangler-action`. The following GitHub **Environment: admin-staging** secrets must be supplied by the repository owner (never in chat or source files):
+
+- `CLOUDFLARE_API_TOKEN` — scoped to edit the appropriate Cloudflare Workers account.
+- `CLOUDFLARE_ACCOUNT_ID` — account owning the Worker.
+- `CLOUDFLARE_KV_NAMESPACE_ID` — pre-created, private admin KV namespace ID.
+- `CONTENT_REPO_TOKEN` — fine-grained GitHub token limited to Crest Crown repo with Contents read/write access.
+- `ADMIN_BOOTSTRAP_PASSWORD` — privately generated temporary secret (20+ characters), not a previously shared password.
+
+The workflow does not deploy from an unreviewed feature branch: it only permits the `develop` branch. A GitHub `workflow_dispatch` entry normally must also be present on the repository default branch to appear in the Actions manual-run interface. Arrange an approved staging workflow release before attempting activation, and retain the production branch protection policy.
+
+Once the above permissions, credentials and workflow are configured, an authorized owner can run the workflow, inspect the actual Cloudflare Worker HTTPS URL, test first-login password replacement, and update `admin/password-admin.json` to link to that verified URL. The GitHub Pages /admin screen remains an honest setup notice until then; it is not a working login form. No secrets, Cloudflare deployment or password have been provisioned by this commit.
