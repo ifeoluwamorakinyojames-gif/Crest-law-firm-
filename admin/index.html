@@ -1,33 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-NG">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
-  <meta name="theme-color" content="#071e3b">
-  <title>Crest Crown Attorneys | Content Administration</title>
-  <link rel="stylesheet" href="./admin.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#071e3b">
+<title>Crest Crown Attorneys — Administrator Sign-in</title>
+<link rel="stylesheet" href="./admin.css">
+<script defer src="./launch.js"></script>
 </head>
 <body>
-  <header class="crest-admin-header">
-    <div class="crest-admin-mark">⚖</div>
-    <div>
-      <strong>CREST CROWN ATTORNEYS</strong>
-      <span>WEBSITE CONTENT ADMINISTRATION</span>
-    </div>
-    <nav class="crest-admin-links" aria-label="Administration links">
-      <a href="./security.html">Account security</a>
-      <a href="../">View landing page</a>
-    </nav>
-  </header>
-  <div class="crest-admin-setup" role="note">
-    <strong>Development setup:</strong>
-    Content editing will require an authorized GitHub account and a securely
-    configured OAuth provider. This is not a public password login.
-    For account password changes, use <a href="./security.html">Account security</a>.
-    <a href="https://github.com/ifeoluwamorakinyojames-gif/Crest-law-firm-/blob/develop/docs/ADMIN_SETUP.md">Admin setup guide</a>
-  </div>
-  <div id="nc-root"></div>
-  <script src="https://unpkg.com/decap-cms@3/dist/decap-cms.js"></script>
+<header class="crest-admin-header">
+  <div class="crest-admin-mark" aria-hidden="true">⚖</div>
+  <div><strong>CREST CROWN ATTORNEYS</strong><span>SECURE WEBSITE ADMINISTRATION</span></div>
+  <nav class="crest-admin-links" aria-label="Administration">
+    <a href="../">Return to website</a>
+  </nav>
+</header>
+<main class="crest-admin-entry">
+  <p class="crest-admin-eyebrow">ADMINISTRATOR LOGIN</p>
+  <h1>Password-only administration</h1>
+  <p>No GitHub account or username is required for staff.
+     Password verification, sessions and content changes are handled by a separate secure server.</p>
+  <a id="secure-admin-link" href="#" hidden>Open secure password login ↗</a>
+  <p id="admin-setup-status" role="status">Checking whether the secure login service is configured…</p>
+  <p>Admin deployment instructions:
+     <a href="https://github.com/ifeoluwamorakinyojames-gif/Crest-law-firm-/blob/feature/website-audit-hardening-2026/worker/README.md">Set up password administration</a>.
+  </p>
+</main>
 </body>
 </html>

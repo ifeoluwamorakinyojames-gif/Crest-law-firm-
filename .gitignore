@@ -13,3 +13,7 @@ coverage/
 _audit_site/
 
 lighthouse-reports/
+
+worker/wrangler.toml
+worker/.dev.vars*
+worker/.wrangler/

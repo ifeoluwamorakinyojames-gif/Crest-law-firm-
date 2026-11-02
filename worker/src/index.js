@@ -213,7 +213,7 @@ export default {
       if (request.method === 'GET' && path === '/admin/app.js') return staticResponse(CLIENT, 'application/javascript; charset=utf-8');
       if (request.method === 'GET' && path === '/admin/style.css') return staticResponse(STYLE, 'text/css; charset=utf-8');
       if (!path.startsWith('/api/')) return json({ error: 'Not found' }, 404);
-      if (!env.ADMIN_KV || !env.SESSION_SECRET || !env.GITHUB_TOKEN) return json({ error: 'Admin service has not been configured' }, 503);
+      if (!env.ADMIN_KV || !env.GITHUB_TOKEN) return json({ error: 'Admin service has not been configured' }, 503);
       if (request.method !== 'GET' && (!sameOrigin(request) || !await inputIsJSON(request))) {
         return json({ error: 'Invalid request origin or content type' }, 403);
       }

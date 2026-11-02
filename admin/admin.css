@@ -1,19 +1,2 @@
-:root{font-family:Arial,Helvetica,sans-serif;color:#152c48;background:#f6f7f8}*{box-sizing:border-box}body{margin:0}.crest-admin-header{height:auto;min-height:75px;display:flex;align-items:center;gap:15px;padding:13px max(18px,calc((100% - 1160px)/2));background:#071e3b;color:#fff;border-bottom:3px solid #dcb15e}.crest-admin-mark{display:grid;place-items:center;width:45px;height:45px;background:#142f50;border:1px solid #c4a05d;border-radius:50%;color:#e7c079;font-size:24px;flex:none}.crest-admin-header div:nth-child(2){display:flex;flex-direction:column;gap:4px}.crest-admin-header strong{font:700 16px Georgia,serif;letter-spacing:.05em}.crest-admin-header span{font-size:9px;letter-spacing:.15em;color:#e7c079}.crest-admin-header a{margin-left:auto;color:#f3d99e;font-size:12px;font-weight:bold;text-decoration:none}.crest-admin-setup{max-width:1150px;margin:16px auto 5px;padding:14px 18px;background:#fff8e9;border-left:4px solid #b78b42;font-size:12px;line-height:1.7;color:#51462f}.crest-admin-setup a{color:#785417;font-weight:bold;margin-left:6px}.crest-admin-setup a:hover{text-decoration:underline}@media(max-width:560px){.crest-admin-header{flex-wrap:wrap}.crest-admin-header a{margin-left:60px}.crest-admin-setup{margin:12px}}
-/* Account security area: real provider password management, no local password forms. */
-.crest-admin-links{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-left:auto}
-.crest-admin-header .crest-admin-links a{margin-left:0}
-.crest-account{width:min(780px,calc(100% - 32px));margin:48px auto 76px}
-.crest-account-eyebrow{font-size:11px;letter-spacing:.16em;color:#9d7639;font-weight:800}
-.crest-account h1{font:700 clamp(2rem,5vw,3rem)/1.2 Georgia,serif;color:#071e3b;margin:10px 0 20px}
-.crest-account>p:not(.crest-account-eyebrow){color:#435775;line-height:1.75}
-.crest-account-card{background:#fff;border:1px solid #e4d9c9;border-top:4px solid #b99150;border-radius:5px;padding:28px;margin:22px 0;box-shadow:0 8px 26px #0d2b4610}
-.crest-account-card h2{font:700 23px/1.3 Georgia,serif;margin:0 0 14px}
-.crest-account-card p,.crest-account-card li{color:#405473;font-size:14px;line-height:1.75}
-.crest-account-card li+li{margin-top:7px}
-.crest-account-button{display:inline-flex;align-items:center;gap:12px;background:#071e3b;color:#fff;text-decoration:none;border-radius:4px;padding:14px 17px;font-weight:700;font-size:13px;margin:8px 0}
-.crest-account-button:hover{background:#254669}
-.crest-account-help{font-size:12px!important;color:#65758b!important}
-.crest-account-notice{background:#fff6e7;border-left:4px solid #b99150;padding:20px;color:#58482f;font-size:13px;line-height:1.75}
-.crest-account-notice a{color:#76511f;font-weight:700}
-.crest-account :focus-visible,.crest-admin-header a:focus-visible{outline:3px solid #b99150;outline-offset:4px}
-@media(max-width:560px){.crest-admin-header .crest-admin-links{margin-left:60px;gap:14px}.crest-account-card{padding:22px}}
+undefined
+.crest-admin-entry{max-width:670px;margin:50px auto;padding:36px;background:white;border-top:4px solid #d7b167;box-shadow:0 10px 30px #071e3b16}.crest-admin-entry h1{font:700 clamp(2rem,4vw,3rem)/1.2 Georgia,serif;color:#071e3b}.crest-admin-entry p{font-size:14px;line-height:1.7;color:#465d70}.crest-admin-eyebrow{font-weight:800;color:#927038!important;letter-spacing:.14em;font-size:11px!important}#secure-admin-link{display:inline-block;background:#071e3b;padding:14px 18px;color:white;text-decoration:none;border-radius:3px;font-weight:700}#secure-admin-link[hidden]{display:none}#admin-setup-status{padding:14px;background:#fff4df;border-left:4px solid #ad8c4d}.crest-admin-entry a:focus-visible{outline:3px solid #bd9d61;outline-offset:4px}@media(max-width:700px){.crest-admin-entry{margin:18px 15px;padding:23px}}

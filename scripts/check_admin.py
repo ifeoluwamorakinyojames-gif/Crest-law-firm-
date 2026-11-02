@@ -42,7 +42,7 @@ assert 'scripts/check_admin.py' not in admin
 assert 'name: github' in admin and 'branch: develop' in admin
 assert 'publish_mode: editorial_workflow' in admin
 assert 'repo: ifeoluwamorakinyojames-gif/Crest-law-firm-' in admin
-assert 'OAuth' in read('admin/index.html')
+assert 'Password-only administration' in read('admin/index.html')
 assert 'cp -R content admin _site/' in workflow
 assert "github.ref == 'refs/heads/develop'" in workflow
 assert 'noindex,nofollow' in html and "noindex,nofollow" in loader
@@ -71,10 +71,22 @@ print('PASS: GitHub-backed admin fields, lawyer credentials, SEO, publication wo
 # Admin accounts use GitHub OAuth: never claim a client-side password is secure.
 security_page=read('admin/security.html')
 admin_page=read('admin/index.html')
-assert 'href="./security.html"' in admin_page, 'Account security link missing in admin'
-assert 'https://github.com/settings/security' in security_page, 'Password settings must link to real account provider'
+assert 'href="./launch.js"' not in admin_page and 'src="./launch.js"' in admin_page, 'Password admin launcher missing'
+assert 'Change password' in security_page, 'Password security instructions missing'
 assert 'noindex,nofollow' in security_page, 'Admin account page should not be indexed'
 assert '<form' not in security_page and 'type="password"' not in security_page, 'Do not simulate password changes in a public static site'
 assert 'localStorage' not in security_page and 'sessionStorage' not in security_page, 'No password storage in browser'
 assert 'cp -R content admin _site/' in workflow, 'Password management page must be included in staging'
 print('PASS: provider-managed admin password changes without shared embedded credentials')
+
+# The intended CMS is now password-only; browser-side credentials are forbidden.
+worker=read('worker/src/index.js')
+launcher=read('admin/launch.js')
+assert 'BOOTSTRAP_ADMIN_PASSWORD' in worker and 'PBKDF2' in worker, 'Secure password hashing must run on the backend'
+assert 'sameOrigin(request)' in worker and 'HttpOnly' in worker and 'SameSite=Strict' in worker
+assert 'SESSION_SECRET' not in worker, 'Do not require unused secrets'
+assert 'localStorage' not in launcher and 'sessionStorage' not in launcher
+assert 'decap-cms' not in admin_page.lower(), 'Legacy GitHub OAuth CMS should not be loaded'
+assert read('admin/password-admin.json').strip().startswith('{'), 'Admin destination config missing'
+assert 'cp -R content admin _site/' in workflow, 'Staging must package the admin launcher'
+print('PASS: password-only admin backend, static launcher, authentication safeguards')
