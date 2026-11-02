@@ -7,3 +7,13 @@ dist/
 .DS_Store
 coverage/
 *.log
+
+.lighthouseci/
+.lighthouseci-reports/
+_audit_site/
+
+lighthouse-reports/
+
+worker/wrangler.toml
+worker/.dev.vars*
+worker/.wrangler/

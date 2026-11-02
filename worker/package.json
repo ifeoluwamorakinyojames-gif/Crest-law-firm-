@@ -1,0 +1,9 @@
+{
+  "name": "crest-crown-password-admin",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/auth.test.mjs",
+    "check": "node --check src/index.js && node --check src/ui.js && node --test tests/auth.test.mjs"
+  }
+}

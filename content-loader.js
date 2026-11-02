@@ -67,6 +67,10 @@ function renderPractices(data) {
     card.appendChild(element('span', String(index + 1).padStart(2, '0'), 'num'));
     card.appendChild(element('h3', service.title));
     card.appendChild(element('p', service.description));
+    const link = element('a', 'Enquire about this service ↗', 'mini-link');
+    link.href = '#contact';
+    link.setAttribute('aria-label', 'Enquire about ' + service.title);
+    card.appendChild(link);
     grid.appendChild(card);
   });
   setText('.service-footnote', data.note);
@@ -103,7 +107,14 @@ function renderTeam(data) {
     if (source) {
       const img = element('img');
       img.src = source; img.alt = 'Professional portrait of ' + person.name;
-      img.loading = 'lazy'; photoBox.appendChild(img);
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.addEventListener('error', () => {
+        photoBox.replaceChildren(element('span', person.name.split(/\s+/).slice(0, 2).map(v => v.charAt(0)).join(''), 'portrait-fallback'));
+      }, { once: true });
+      photoBox.appendChild(img);
+    } else {
+      photoBox.appendChild(element('span', person.name.split(/\s+/).slice(0, 2).map(v => v.charAt(0)).join(''), 'portrait-fallback'));
     }
     card.appendChild(photoBox);
     const body = element('div', null, 'team-body');
@@ -145,7 +156,7 @@ function renderInsights(site, data) {
   if (!parent) return;
   const old = $('.landing-articles-grid', parent);
   if (old) old.remove();
-  const approved = (data.articles || []).filter(a => a.status === 'published').slice(0, 3);
+  const approved = (data.articles || []).filter(a => a.status === 'published' && a.legalReviewed === true).slice(0, 3);
   if (!approved.length) return;
   const grid = element('div', null, 'landing-articles-grid');
   approved.forEach(article => {
@@ -202,6 +213,15 @@ function renderSEO(site, team) {
   document.title = site.seo.title || site.name;
   const description = $('meta[name="description"]');
   if (description) description.content = site.seo.description;
+  for (const [selector, value] of [
+    ['meta[property="og:title"]', site.seo.title],
+    ['meta[property="og:description"]', site.seo.description],
+    ['meta[name="twitter:title"]', site.seo.title],
+    ['meta[name="twitter:description"]', site.seo.description]
+  ]) {
+    const meta = $(selector);
+    if (meta) meta.content = value;
+  }
   // GitHub Pages staging remains intentionally noindex regardless of editor input.
   const robots = $('meta[name="robots"]');
   if (robots) robots.content = 'noindex,nofollow';

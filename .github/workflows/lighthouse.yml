@@ -1,0 +1,35 @@
+name: Lighthouse CI — staging website audit
+on:
+  pull_request:
+    branches: [develop]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate source
+        run: |
+          python3 scripts/check_site.py
+          python3 scripts/check_admin.py
+      - name: Prepare audit-only static directory
+        run: |
+          mkdir -p _audit_site
+          cp index.html privacy.html terms.html styles.css script.js content-loader.js _audit_site/
+          cp -R content assets _audit_site/
+      - name: Audit with Google Lighthouse CI
+        run: |
+          npm install --global @lhci/cli@0.15.x
+          lhci autorun
+      - name: Preserve reports as workflow artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: crest-crown-lighthouse-reports
+          path: lighthouse-reports/
+          if-no-files-found: ignore

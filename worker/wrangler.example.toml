@@ -1,0 +1,15 @@
+# Copy to wrangler.toml and fill in the actual KV namespace ID.
+# This example is not deployable until the owner configures Cloudflare.
+name = "crest-crown-password-admin"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[vars]
+GITHUB_OWNER = "ifeoluwamorakinyojames-gif"
+GITHUB_REPO = "Crest-law-firm-"
+GITHUB_BRANCH = "develop"
+
+[[kv_namespaces]]
+binding = "ADMIN_KV"
+id = "SET_THIS_TO_YOUR_REAL_KV_NAMESPACE_ID"

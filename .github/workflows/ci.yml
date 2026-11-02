@@ -23,3 +23,7 @@ jobs:
         run: |
           node --check script.js
           node --check content-loader.js
+          node --check admin/launch.js
+          node --check worker/src/index.js
+          node --check worker/src/ui.js
+          node --test worker/tests/auth.test.mjs

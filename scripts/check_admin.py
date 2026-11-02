@@ -23,7 +23,8 @@ assert site['name']=='Crest Crown Attorneys'
 assert site['contact']['email']=='crestcrownattorneys@gmail.com'
 assert 'wa.me' in html and 'wa.me' in loader
 assert len(services['services']) >= 5, 'Required legal practice areas missing'
-assert len(team['people'])>=2, 'Both confirmed practitioners are required'
+assert len(team['people'])>=3, 'All three confirmed practitioners are required'
+assert any(p['name']=='Ejeremedoghene Ejiroghene' and 'Family Law' in p['specialisations'] for p in team['people']), 'Family Law profile missing'
 assert team['people'][0]['role']=='Founder & Principal Counsel'
 assert team['people'][1]['role'].startswith('Legal Associate')
 assert any(e['degree']=='B.L' for e in team['people'][1]['education'])
@@ -32,13 +33,16 @@ assert not team['people'][0]['education'], 'Do not invent Eloho academic credent
 assert all('title' in p and 'description' in p for p in services['services'])
 assert all('name' in p and 'bio' in p for p in team['people'])
 assert all(p.get('status') in ('draft','review','published') for p in posts['articles'])
+assert all(p.get('status') != 'published' or p.get('legalReviewed') is True for p in posts['articles']), 'Articles must receive Counsel review before publication'
+assert "a.legalReviewed === true" in loader, 'Renderer must filter out unapproved articles'
+assert 'name: "legalReviewed"' in admin, 'CMS legal review field is required'
 assert 'content-loader.js' in html
 assert "fetch('./content/'" in loader, 'Landing page must read GitHub-managed content'
 assert 'scripts/check_admin.py' not in admin
 assert 'name: github' in admin and 'branch: develop' in admin
 assert 'publish_mode: editorial_workflow' in admin
 assert 'repo: ifeoluwamorakinyojames-gif/Crest-law-firm-' in admin
-assert 'OAuth' in read('admin/index.html')
+assert 'Password-only administration' in read('admin/index.html')
 assert 'cp -R content admin _site/' in workflow
 assert "github.ref == 'refs/heads/develop'" in workflow
 assert 'noindex,nofollow' in html and "noindex,nofollow" in loader
@@ -63,3 +67,26 @@ p=Parser()
 p.feed(html)
 assert all(a in p.ids for a in p.anchors), 'Broken in-page navigation'
 print('PASS: GitHub-backed admin fields, lawyer credentials, SEO, publication workflow and asset packaging')
+
+# Admin accounts use GitHub OAuth: never claim a client-side password is secure.
+security_page=read('admin/security.html')
+admin_page=read('admin/index.html')
+assert 'href="./launch.js"' not in admin_page and 'src="./launch.js"' in admin_page, 'Password admin launcher missing'
+assert 'Change password' in security_page, 'Password security instructions missing'
+assert 'noindex,nofollow' in security_page, 'Admin account page should not be indexed'
+assert '<form' not in security_page and 'type="password"' not in security_page, 'Do not simulate password changes in a public static site'
+assert 'localStorage' not in security_page and 'sessionStorage' not in security_page, 'No password storage in browser'
+assert 'cp -R content admin _site/' in workflow, 'Password management page must be included in staging'
+print('PASS: provider-managed admin password changes without shared embedded credentials')
+
+# The intended CMS is now password-only; browser-side credentials are forbidden.
+worker=read('worker/src/index.js')
+launcher=read('admin/launch.js')
+assert 'BOOTSTRAP_ADMIN_PASSWORD' in worker and 'PBKDF2' in worker, 'Secure password hashing must run on the backend'
+assert 'sameOrigin(request)' in worker and 'HttpOnly' in worker and 'SameSite=Strict' in worker
+assert 'SESSION_SECRET' not in worker, 'Do not require unused secrets'
+assert 'localStorage' not in launcher and 'sessionStorage' not in launcher
+assert 'decap-cms' not in admin_page.lower(), 'Legacy GitHub OAuth CMS should not be loaded'
+assert read('admin/password-admin.json').strip().startswith('{'), 'Admin destination config missing'
+assert 'cp -R content admin _site/' in workflow, 'Staging must package the admin launcher'
+print('PASS: password-only admin backend, static launcher, authentication safeguards')
