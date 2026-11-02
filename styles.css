@@ -230,3 +230,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #ea
 .legal-nav a{color:#f1cb83;font-weight:700}
 @media(max-width:1050px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:710px){.team-grid{grid-template-columns:1fr}.portrait{height:390px}}
+
+/* Prominent website-section links just beneath the Crest Crown header.
+   At smaller widths, visitors can swipe horizontally instead of hunting for a menu. */
+.section-shortcuts{display:none;background:#0c2a4a;border-top:1px solid #48627a;border-bottom:1px solid #cda456;position:relative;z-index:31}
+.section-shortcuts-scroll{display:flex;align-items:center;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#cda456 transparent;padding:7px 0}
+.section-shortcuts a{color:#f8f0dd;font-weight:700;font-size:12px;white-space:nowrap;padding:10px 13px;border-radius:4px;flex:0 0 auto}
+.section-shortcuts a:hover,.section-shortcuts a:focus-visible{background:#214668;color:#f8d080}
+@media(max-width:960px){
+.section-shortcuts{display:block}
+.site-header .navrow{height:68px}
+}
+@media(max-width:470px){
+.section-shortcuts a{padding:9px 11px;font-size:11px}
+.section-shortcuts-scroll{gap:3px}
+}

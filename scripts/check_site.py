@@ -45,3 +45,10 @@ assert 'property="og:title"' in html, 'Social metadata missing'
 assert 'Enquire about this service' in (root/'content-loader.js').read_text(encoding='utf8'), 'Service link missing'
 assert 'Ejeremedoghene Ejiroghene' in html, 'Third profile missing from no-JavaScript fallback'
 print('PASS: new pages, metadata, legal review notes, service CTAs and lawyer fallback')
+
+# The website's primary sections must remain discoverable at the top on small screens.
+assert 'class="section-shortcuts"' in html, 'Top website-section bar missing'
+for anchor in ('home','about','practice','team','insights','contact'):
+    assert f'href="#{anchor}"' in html, f'Section link missing: {anchor}'
+assert '.section-shortcuts-scroll' in css and 'overflow-x:auto' in css, 'Mobile quick navigation must scroll without overflow'
+print('PASS: visible top website section navigation on tablet/mobile')
