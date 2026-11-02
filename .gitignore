@@ -11,3 +11,5 @@ coverage/
 .lighthouseci/
 .lighthouseci-reports/
 _audit_site/
+
+lighthouse-reports/
