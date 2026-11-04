@@ -210,3 +210,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #ea
 .details-inner .professional-specialisations{padding-left:18px;margin:7px 0}
 .details-inner .professional-specialisations li{line-height:1.75;margin-bottom:5px}
 @media(max-width:860px){.landing-articles-grid{grid-template-columns:1fr}}
+
+/* Crest Crown Attorneys blog */
+.blog{background:#f7f8fb}
+.blog .section-title{max-width:780px}
+.blog-articles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:34px}
+.blog-card{min-width:0;background:#fff;border:1px solid #e5e9ee;border-top:3px solid #c49a50;border-radius:5px;padding:26px;box-shadow:0 8px 26px #071e3b0a}
+.blog-card .blog-date{color:#9c743d;font-size:12px}
+.blog-card h3{font-size:21px;line-height:1.35;margin:12px 0;color:#071e3b}
+.blog-card p{font-size:14px;color:#536273;line-height:1.7}
+.blog-card .blog-byline{font-size:12px;color:#94703e}
+.blog-empty{grid-column:1/-1;padding:25px 27px;border:1px solid #e2e7ed;border-radius:5px;background:#fff;color:#536273}
+@media(max-width:860px){.blog-articles{grid-template-columns:1fr}}
