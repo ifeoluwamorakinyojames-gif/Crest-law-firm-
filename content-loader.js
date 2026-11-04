@@ -135,28 +135,33 @@ function renderTeam(data) {
     card.appendChild(body); grid.appendChild(card);
   });
 }
-function renderInsights(site, data) {
+function renderInsights(site) {
   setText('.insight .overline', site.insights.eyebrow);
   setText('.insight h2', site.insights.heading);
   setText('.insight .insight-grid > div:first-child p:not(.overline):not(.disclaimer)', site.insights.body);
   setText('.insight .disclaimer', site.insights.disclaimer);
   setText('.insight-box p', site.insights.quote);
-  const parent = $('#insights .shell');
-  if (!parent) return;
-  const old = $('.landing-articles-grid', parent);
-  if (old) old.remove();
-  const approved = (data.articles || []).filter(a => a.status === 'published').slice(0, 3);
-  if (!approved.length) return;
-  const grid = element('div', null, 'landing-articles-grid');
-  approved.forEach(article => {
-    const box = element('article', null, 'landing-article');
-    box.appendChild(element('small', article.date || ''));
-    box.appendChild(element('h3', article.title));
-    box.appendChild(element('p', article.summary));
-    box.appendChild(element('span', 'By ' + (article.author || 'Crest Crown Attorneys')));
-    grid.appendChild(box);
+}
+function renderBlog(data) {
+  const grid = $('#blog .blog-articles');
+  if (!grid) return;
+  grid.replaceChildren();
+
+  const published = (Array.isArray(data.articles) ? data.articles : [])
+    .filter(article => article.status === 'published');
+  if (!published.length) {
+    grid.appendChild(element('p', 'No published articles yet. Approved legal insights will appear here.', 'blog-empty'));
+    return;
+  }
+
+  published.forEach(article => {
+    const card = element('article', null, 'blog-card');
+    if (article.date) card.appendChild(element('small', article.date, 'blog-date'));
+    card.appendChild(element('h3', article.title));
+    card.appendChild(element('p', article.summary));
+    card.appendChild(element('span', 'By ' + (article.author || 'Crest Crown Attorneys'), 'blog-byline'));
+    grid.appendChild(card);
   });
-  parent.appendChild(grid);
 }
 function renderContact(site) {
   const c = site.contact, phone = digits(c.phone), wa = digits(c.whatsapp);
@@ -225,7 +230,7 @@ async function hydrate() {
   if (response.some(r => !r.ok)) throw new Error('Website content files are not yet available');
   const [site, practices, team, articles] = await Promise.all(response.map(r => r.json()));
   renderHome(site); renderAbout(site); renderPractices(practices); renderTeam(team);
-  renderInsights(site, articles); renderContact(site); renderSEO(site, team);
+  renderInsights(site); renderBlog(articles); renderContact(site); renderSEO(site, team);
   const logo = safeImage(site.logo);
   if (logo) {
     all('.brand-logo img, .about-logo img').forEach(img => { img.src = logo; });
