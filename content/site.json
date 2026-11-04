@@ -3,10 +3,10 @@
   "tagline": "LAW · JUSTICE · RESULTS",
   "logo": "https://crest-crown-attorneys-website-preview-kmw62k.v2.appdeploy.ai/resources/crest-crown-logo.jpg",
   "hero": {
-    "eyebrow": "LEGAL SERVICES IN EFFURUN, DELTA STATE",
-    "headline": "Practical Legal Advice.\nBased in Effurun.\nCrest Crown Attorneys.",
-    "highlightLine": 2,
-    "description": "Crest Crown Attorneys provides legal guidance in Effurun, near Warri, for corporate and CAC compliance, property transactions, family matters and dispute resolution.",
+    "eyebrow": "NIGERIAN LEGAL SERVICES • NATIONAL & INTERNATIONAL CLIENTS",
+    "headline": "Trusted Legal Counsel in Nigeria.\nFor Local & International Clients.\nCrest Crown Attorneys.",
+    "highlightLine": 1,
+    "description": "Crest Crown Attorneys advises individuals, businesses, corporate organisations, Nigerians in the diaspora and international clients on Nigerian legal matters, including corporate and regulatory compliance, property, family law and dispute resolution.",
     "primaryButton": "Request a Consultation",
     "secondaryButton": "Our Practice Areas"
   },
@@ -14,7 +14,7 @@
     "eyebrow": "ABOUT THE FIRM",
     "heading": "Professional counsel. Human understanding.",
     "body": [
-      "Based in Effurun, Delta State, Crest Crown Attorneys provides legal guidance to individuals, entrepreneurs, businesses and corporate organisations in the Warri–Effurun area and beyond.",
+      "With its office in Effurun, Delta State, Crest Crown Attorneys serves clients across Nigeria and internationally on matters involving Nigerian law, including individuals, entrepreneurs, companies, diaspora clients and overseas investors.",
       "Led by Founder and Principal Counsel Eloho Avwaruroro-Okoye, Esq., the firm combines legal knowledge, practical advice and a professional commitment to its clients."
     ],
     "values": [
@@ -39,17 +39,19 @@
     "hoursSaturday": "Saturday: 10 AM–4 PM"
   },
   "seo": {
-    "title": "Law Firm in Effurun, Delta State | Crest Crown Attorneys",
-    "description": "Crest Crown Attorneys is a law firm in Effurun near Warri, providing corporate, CAC, property, family and dispute resolution legal services.",
+    "title": "Nigerian Law Firm for Local & International Clients | Crest Crown Attorneys",
+    "description": "Crest Crown Attorneys provides Nigerian legal advice for individuals, businesses, diaspora clients and international investors. Corporate, property, family and dispute services.",
     "noindex": true,
-    "primaryKeyword": "law firm in Effurun",
+    "primaryKeyword": "law firm in Nigeria",
     "secondaryKeywords": [
-      "lawyers in Warri",
-      "corporate lawyer in Effurun",
-      "CAC registration lawyer in Warri",
-      "property lawyer near Warri",
-      "family law in Delta State"
+      "Nigerian legal services for international clients",
+      "corporate lawyers in Nigeria",
+      "legal services for foreign investors in Nigeria",
+      "Nigerian property lawyers for diaspora clients",
+      "CAC registration and regulatory compliance in Nigeria",
+      "family law solicitors in Nigeria",
+      "lawyers in Effurun and Warri"
     ],
-    "serviceArea": "Effurun, Warri and Delta State, Nigeria"
+    "serviceArea": "Clients across Nigeria and internationally for Nigerian legal matters; office in Effurun, Delta State"
   }
 }
