@@ -16,6 +16,7 @@ jobs:
         run: |
           python3 scripts/check_site.py
           python3 scripts/check_admin.py
+          python3 scripts/check_seo.py
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -23,3 +24,4 @@ jobs:
         run: |
           node --check script.js
           node --check content-loader.js
+          node --check admin/seo-advisor.js

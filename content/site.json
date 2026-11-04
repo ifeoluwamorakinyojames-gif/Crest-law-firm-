@@ -3,10 +3,10 @@
   "tagline": "LAW · JUSTICE · RESULTS",
   "logo": "https://crest-crown-attorneys-website-preview-kmw62k.v2.appdeploy.ai/resources/crest-crown-logo.jpg",
   "hero": {
-    "eyebrow": "A COMMITMENT TO EXCELLENCE",
-    "headline": "Your Interests.\nOur Commitment.\nLegal Excellence.",
+    "eyebrow": "LEGAL SERVICES IN EFFURUN, DELTA STATE",
+    "headline": "Practical Legal Advice.\nBased in Effurun.\nCrest Crown Attorneys.",
     "highlightLine": 2,
-    "description": "Practical legal guidance, thoughtful representation and clear counsel for individuals, businesses and corporate organisations in Nigeria.",
+    "description": "Crest Crown Attorneys provides legal guidance in Effurun, near Warri, for corporate and CAC compliance, property transactions, family matters and dispute resolution.",
     "primaryButton": "Request a Consultation",
     "secondaryButton": "Our Practice Areas"
   },
@@ -14,7 +14,7 @@
     "eyebrow": "ABOUT THE FIRM",
     "heading": "Professional counsel. Human understanding.",
     "body": [
-      "Crest Crown Attorneys is a Nigerian law firm serving individuals, entrepreneurs and corporate organisations from Effurun, Delta State.",
+      "Based in Effurun, Delta State, Crest Crown Attorneys provides legal guidance to individuals, entrepreneurs, businesses and corporate organisations in the Warri–Effurun area and beyond.",
       "Led by Founder and Principal Counsel Eloho Avwaruroro-Okoye, Esq., the firm combines legal knowledge, practical advice and a professional commitment to its clients."
     ],
     "values": [
@@ -39,8 +39,17 @@
     "hoursSaturday": "Saturday: 10 AM–4 PM"
   },
   "seo": {
-    "title": "Crest Crown Attorneys | Law · Justice · Results",
-    "description": "Crest Crown Attorneys offers professional legal guidance in corporate, property, family and dispute-related law in Effurun, Delta State, Nigeria.",
-    "noindex": true
+    "title": "Law Firm in Effurun, Delta State | Crest Crown Attorneys",
+    "description": "Crest Crown Attorneys is a law firm in Effurun near Warri, providing corporate, CAC, property, family and dispute resolution legal services.",
+    "noindex": true,
+    "primaryKeyword": "law firm in Effurun",
+    "secondaryKeywords": [
+      "lawyers in Warri",
+      "corporate lawyer in Effurun",
+      "CAC registration lawyer in Warri",
+      "property lawyer near Warri",
+      "family law in Delta State"
+    ],
+    "serviceArea": "Effurun, Warri and Delta State, Nigeria"
   }
 }

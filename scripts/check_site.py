@@ -22,7 +22,7 @@ class Parse(HTMLParser):
   if tag=='script':self.json=False
 p=Parse();p.feed(html)
 assert p.h1==1,'Exactly one H1 is required'
-assert all(h.startswith(('https://','mailto:','tel:')) or (h.startswith('#') and h[1:] in p.ids) for h in p.refs),'Broken or unsafe href'
+assert all(h.startswith(('https://','mailto:','tel:')) or (h.startswith('#') and h[1:] in p.ids) or (h.startswith('./areas/') and (root / h.removeprefix('./')).is_file()) for h in p.refs),'Broken or unsafe href'
 assert all('alt' in im for im in p.images),'Missing image alt'
 assert 'aria-expanded' in html and 'aria-expanded' in js,'Accessible mobile navigation missing'
 assert 'noindex,nofollow' in html,'Preview must not be indexed'
