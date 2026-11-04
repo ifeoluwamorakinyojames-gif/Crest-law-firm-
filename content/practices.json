@@ -4,19 +4,27 @@
   "services": [
     {
       "title": "Corporate & Regulatory Compliance",
-      "description": "Business and company registration, CAC filings, annual returns, post-incorporation services and regulatory guidance."
+      "description": "Business and company registration, CAC filings, annual returns, post-incorporation services and regulatory guidance.",
+      "url": "./areas/corporate-cac-compliance-effurun.html",
+      "primaryKeyword": "corporate lawyer in Effurun"
     },
     {
       "title": "Property & Real Estate Law",
-      "description": "Property due diligence, land transactions, title searches, tenancy matters and agreements."
+      "description": "Property due diligence, land transactions, title searches, tenancy matters and agreements.",
+      "url": "./areas/property-law-warri-effurun.html",
+      "primaryKeyword": "property lawyer near Warri"
     },
     {
       "title": "Family Law",
-      "description": "Divorce, child custody, child welfare and related family legal matters."
+      "description": "Divorce, child custody, child welfare and related family legal matters.",
+      "url": "./areas/family-law-effurun.html",
+      "primaryKeyword": "family law in Delta State"
     },
     {
       "title": "Litigation & Dispute Resolution",
-      "description": "Legal advice and representation in disputes, negotiation and appropriate resolution procedures."
+      "description": "Legal advice and representation in disputes, negotiation and appropriate resolution procedures.",
+      "url": "./areas/litigation-dispute-resolution-effurun.html",
+      "primaryKeyword": "litigation lawyer in Effurun"
     },
     {
       "title": "Contract Drafting & Review",
@@ -28,7 +36,9 @@
     },
     {
       "title": "Debt Recovery & Recovery of Premises",
-      "description": "Debt recovery, property recovery and related legal matters."
+      "description": "Debt recovery, property recovery and related legal matters.",
+      "url": "./areas/debt-recovery-effurun.html",
+      "primaryKeyword": "debt recovery lawyer in Delta State"
     },
     {
       "title": "Criminal Law & Defence",

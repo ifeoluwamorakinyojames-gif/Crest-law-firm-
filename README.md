@@ -56,3 +56,7 @@ node --check content-loader.js
 ## Editing website content
 
 The landing page reads editable JSON from `content/`. Authorized lawyers will be able to propose changes through Decap CMS at `/admin/` once a secure GitHub OAuth provider has been configured. Editorial workflow sends drafts for review before merging to `develop`. See [Admin setup](docs/ADMIN_SETUP.md). Do not place a GitHub access token in the public site.
+
+## SEO / GEO foundation
+
+SEO and local search work is mapped to real services, the Effurun office and five dedicated service pages in `areas/`. See `docs/SEO_GEO_PLAYBOOK.md` and the rule-based editor advisor at `/admin/seo-advisor.html`. All staging pages remain `noindex` until legal-content approval, official domain verification and production release. Search rankings and AI citations cannot be guaranteed.

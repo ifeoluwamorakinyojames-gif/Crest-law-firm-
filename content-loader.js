@@ -67,6 +67,11 @@ function renderPractices(data) {
     card.appendChild(element('span', String(index + 1).padStart(2, '0'), 'num'));
     card.appendChild(element('h3', service.title));
     card.appendChild(element('p', service.description));
+    if (typeof service.url === 'string' && /^\.\/areas\/[a-z0-9-]+\.html$/.test(service.url)) {
+      const link = element('a', 'Read about this practice area →', 'practice-more');
+      link.href = service.url;
+      card.appendChild(link);
+    }
     grid.appendChild(card);
   });
   setText('.service-footnote', data.note);
@@ -217,6 +222,9 @@ function renderSEO(site, team) {
       email: site.contact.email,
       address: { '@type': 'PostalAddress', streetAddress: site.contact.address,
         addressLocality: 'Effurun', addressRegion: 'Delta State', addressCountry: 'NG' },
+      description: site.seo.description,
+      areaServed: [ { '@type': 'Place', name: 'Effurun, Delta State, Nigeria' }, { '@type': 'Place', name: 'Warri, Delta State, Nigeria' } ],
+      logo: safeImage(site.logo) || undefined,
       employee: (team.people || []).map(p => ({
         '@type': 'Person', name: p.name, jobTitle: p.role,
         knowsAbout: p.specialisations || []

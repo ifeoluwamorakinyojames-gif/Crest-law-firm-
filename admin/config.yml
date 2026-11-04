@@ -74,6 +74,9 @@ collections:
             fields:
               - { label: "SEO Title", name: "title", widget: "string" }
               - { label: "Meta Description", name: "description", widget: "text" }
+              - { label: "Primary SEO Keyword", name: "primaryKeyword", widget: "string", required: false }
+              - { label: "Supporting SEO Keywords", name: "secondaryKeywords", widget: "list", required: false, field: { label: "Keyword", name: "keyword", widget: "string" } }
+              - { label: "Service Area", name: "serviceArea", widget: "string", required: false }
               - { label: "Prevent Search Indexing (keep on for staging)", name: "noindex", widget: "boolean", default: true }
   - name: "practices"
     label: "Practice Areas"
@@ -92,6 +95,8 @@ collections:
             fields:
               - { label: "Service Name", name: "title", widget: "string" }
               - { label: "Short Description", name: "description", widget: "text" }
+              - { label: "Service Page URL", name: "url", widget: "string", required: false, hint: "Use ./areas/name.html for existing approved pages" }
+              - { label: "Focus Keyword", name: "primaryKeyword", widget: "string", required: false }
           - { label: "Regulatory Services Note", name: "note", widget: "text", required: false }
   - name: "team"
     label: "Legal Team"

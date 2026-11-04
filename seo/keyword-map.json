@@ -1,0 +1,90 @@
+{
+  "version": "2026-11-04",
+  "researchNote": "Candidate phrases selected by search intent and firm service relevance. No verified search volume or rankings are claimed. Final wording and service claims require counsel review.",
+  "audience": "Individuals, businesses and organisations searching for legal help in Effurun, Warri and Delta State, Nigeria.",
+  "keywords": [
+    {
+      "keyword": "law firm in Effurun",
+      "intent": "local transactional",
+      "page": "/",
+      "priority": "primary"
+    },
+    {
+      "keyword": "lawyers in Warri",
+      "intent": "local discovery",
+      "page": "/",
+      "priority": "supporting"
+    },
+    {
+      "keyword": "corporate lawyer in Effurun",
+      "intent": "service + location",
+      "page": "/areas/corporate-cac-compliance-effurun.html",
+      "priority": "primary"
+    },
+    {
+      "keyword": "property lawyer near Warri",
+      "intent": "service + location",
+      "page": "/areas/property-law-warri-effurun.html",
+      "priority": "primary"
+    },
+    {
+      "keyword": "family law in Delta State",
+      "intent": "service + location",
+      "page": "/areas/family-law-effurun.html",
+      "priority": "primary"
+    },
+    {
+      "keyword": "litigation lawyer in Effurun",
+      "intent": "service + location",
+      "page": "/areas/litigation-dispute-resolution-effurun.html",
+      "priority": "primary"
+    },
+    {
+      "keyword": "debt recovery lawyer in Delta State",
+      "intent": "service + location",
+      "page": "/areas/debt-recovery-effurun.html",
+      "priority": "primary"
+    },
+    {
+      "keyword": "CAC registration lawyer in Warri",
+      "intent": "service discovery",
+      "page": "/areas/corporate-cac-compliance-effurun.html",
+      "priority": "supporting"
+    },
+    {
+      "keyword": "property due diligence in Delta State",
+      "intent": "service information",
+      "page": "/areas/property-law-warri-effurun.html",
+      "priority": "supporting"
+    },
+    {
+      "keyword": "child custody lawyer in Delta State",
+      "intent": "service discovery",
+      "page": "/areas/family-law-effurun.html",
+      "priority": "supporting"
+    },
+    {
+      "keyword": "legal services in Effurun",
+      "intent": "local transactional",
+      "page": "/",
+      "priority": "supporting"
+    }
+  ],
+  "blogTopics": [
+    {
+      "title": "How to prepare for a company registration consultation in Nigeria",
+      "target": "CAC registration requirements Nigeria",
+      "status": "requires counsel review"
+    },
+    {
+      "title": "Questions to ask before a property purchase in Delta State",
+      "target": "property due diligence Delta State",
+      "status": "requires counsel review"
+    },
+    {
+      "title": "Understanding family law consultations in Nigeria",
+      "target": "family law consultation Nigeria",
+      "status": "requires counsel review"
+    }
+  ]
+}
