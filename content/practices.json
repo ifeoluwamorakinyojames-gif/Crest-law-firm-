@@ -28,11 +28,15 @@
     },
     {
       "title": "Contract Drafting & Review",
-      "description": "Clear contracts, commercial agreements, review and contractual risk advice."
+      "description": "Clear contracts, commercial agreements, review and contractual risk advice.",
+      "url": "./areas/contract-drafting-review-nigeria.html",
+      "primaryKeyword": "contract drafting & review Nigeria"
     },
     {
       "title": "Maritime & Commercial Law",
-      "description": "Maritime-related legal advice and commercial legal matters."
+      "description": "Maritime-related legal advice and commercial legal matters.",
+      "url": "./areas/maritime-commercial-law-nigeria.html",
+      "primaryKeyword": "maritime & commercial law Nigeria"
     },
     {
       "title": "Debt Recovery & Recovery of Premises",
@@ -42,7 +46,9 @@
     },
     {
       "title": "Criminal Law & Defence",
-      "description": "Legal consultation and representation in criminal matters where professionally appropriate."
+      "description": "Legal consultation and representation in criminal matters where professionally appropriate.",
+      "url": "./areas/criminal-law-defence-nigeria.html",
+      "primaryKeyword": "criminal law & defence Nigeria"
     }
   ],
   "note": "Regulatory support identified by the firm includes NAFDAC registration, SCUML certification, tax compliance, NSITF and other regulatory certifications, subject to Counsel's confirmation of current processes."
