@@ -92,3 +92,20 @@ if(path==='/contact'||path==='/consultation'){
  let widgetId;const submit=form.querySelector('button');submit.disabled=true;
  fetch('/api/public-config').then(r=>r.json()).then(({turnstileSiteKey})=>{if(!turnstileSiteKey)throw Error('Enquiry verification not configured');const slot=document.createElement('div');form.insertBefore(slot,submit);const script=document.createElement('script');script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';script.async=true;script.onload=()=>{widgetId=window.turnstile.render(slot,{sitekey:turnstileSiteKey,callback:()=>{submit.disabled=false},'expired-callback':()=>{submit.disabled=true}})};document.head.append(script)}).catch(()=>{form.querySelector('[role="status"]').textContent='Enquiry form is not yet available. Please use the firm’s verified contact channels.'});
 }
+
+
+// Apply administrator-managed branding after rendering the default layout.
+(async function applyBranding(){
+ try{
+  const response=await fetch('/api/branding',{credentials:'omit'});if(!response.ok)return;
+  const {branding={}}=await response.json();
+  if(branding.logo_url){
+   const emblem=document.querySelector('.brand-emblem');
+   if(emblem){const img=document.createElement('img');img.src=branding.logo_url;img.alt='Crest Crown Attorneys logo';img.className='site-logo';emblem.replaceChildren(img)}
+  }
+  if(branding.banner_url){
+   const banner=document.querySelector('.hero-photo');
+   if(banner){banner.style.backgroundImage='linear-gradient(90deg,#071d3655,#0b1c3111),url("'+branding.banner_url+'")'}
+  }
+ }catch(error){console.warn('Branding settings unavailable',error)}
+})();
