@@ -24,3 +24,25 @@ if(!body)body=intro("404",title,"This page does not exist.")+'<section class="wr
 document.title=title+" | Crest Crown Attorneys";
 document.querySelector('meta[name="description"]').setAttribute("content",title+" — Crest Crown Attorneys. Nigerian legal services for national and international clients.");
 document.getElementById("app").innerHTML='<a class="skip" href="#main">Skip to content</a><header><div class="wrap header"><a class="brand" href="/">CREST CROWN <span>ATTORNEYS</span></a><nav aria-label="Main navigation">'+nav.map(n=>link(n[1],n[0])).join('')+'</nav></div></header><main id="main">'+body+'</main><footer><div class="wrap"><strong>Crest Crown Attorneys</strong><p>Serving Nigerian legal needs nationwide and welcoming international enquiries.</p><div class="footerlinks">'+nav.map(n=>link(n[1],n[0])).join('')+link("/privacy-policy","Privacy")+link("/terms-of-use","Terms")+link("/legal-disclaimer","Disclaimer")+'</div><small>Information on this website does not constitute legal advice.</small></div></footer>';
+
+
+// Published custom sections are fetched from Cloudflare D1 and rendered as text,
+// never injected as HTML. The admin may create sections for any supported page.
+(async function loadPublishedSections(){
+ try{
+  const response=await fetch('/api/sections?page='+encodeURIComponent(path),{credentials:'omit'});
+  if(!response.ok)return;
+  const data=await response.json();
+  if(!Array.isArray(data.sections)||!data.sections.length)return;
+  const target=document.createElement('section');
+  target.className='wrap section';
+  target.setAttribute('aria-label','Additional information');
+  for(const item of data.sections){
+   const article=document.createElement('article');article.className='card';article.style.marginBottom='20px';
+   const heading=document.createElement('h2');heading.textContent=item.title;
+   const text=document.createElement('p');text.textContent=item.body;text.style.whiteSpace='pre-wrap';
+   article.append(heading,text);target.append(article);
+  }
+  document.querySelector('main')?.append(target);
+ }catch(error){console.warn('Custom content unavailable',error)}
+})();
