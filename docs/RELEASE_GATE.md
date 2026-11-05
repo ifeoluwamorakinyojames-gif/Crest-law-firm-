@@ -13,3 +13,8 @@
 - Google Ads / Meta Ads campaigns, tags and conversions require separate account setup, consent design and test events. No tracking is active by default.
 - Remove development robots block only on approved launch.
 - Obtain explicit production merge and deployment approval.
+
+## Enquiry anti-spam settings
+Create a Cloudflare Turnstile widget for the approved Pages preview/production hostnames. Set Pages environment variable TURNSTILE_SITE_KEY (public) and encrypted TURNSTILE_SECRET_KEY (server only). The enquiry endpoint fails closed until the secret is set, and the form disables submission until a challenge succeeds. Add rate limiting in Cloudflare WAF, then test valid, invalid and expired tokens. Verify enquiry retention and data privacy before collecting personal data.
+## Ads readiness
+Google Ads and Meta Ads can link to website pages; conversion pixels and campaign management remain deliberately inactive until verified ad accounts, consent controls and privacy approval exist. Do not claim ads are running.
