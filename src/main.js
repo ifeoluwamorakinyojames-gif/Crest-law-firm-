@@ -2,13 +2,14 @@ const practices=[["Corporate & Commercial Law","corporate-commercial-law","Corpo
 const team=[["Glory Toritseju Kunu","Corporate Practice & Property Law","BL, Nigerian Law School Abuja; LLB, Ambrose Alli University. CAC Accredited Agent; NBA Warri."],["Eloho","Corporate & Regulatory Compliance","Full name and professional qualifications pending verification."],["Ejeremedoghene Ejiroghene","Family Law","Professional qualifications pending verification."]];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const nav=[["Home","/"],["About","/about"],["Practice Areas","/practice-areas"],["Our Team","/team"],["Insights","/insights"],["Careers","/careers"],["Contact","/contact"]];
-const path=decodeURI(location.pathname).replace(/\/$/,"")||"/";
+const path=location.pathname.replace(/\/$/,"")||"/";
 const link=(url,text)=>'<a href="'+url+'">'+esc(text)+'</a>';
 const card=(title,desc,url)=>'<article class="card"><h3>'+link(url,title)+'</h3><p>'+esc(desc)+'</p>'+link(url,"Learn more →")+'</article>';
 const intro=(tag,title,lead)=>'<section class="intro"><div class="wrap"><p class="eyebrow">'+esc(tag)+'</p><h1>'+esc(title)+'</h1><p class="lead">'+esc(lead)+'</p></div></section>';
 const practiceCards=()=>'<div class="grid">'+practices.map(p=>card(p[0],p[2],'/practice-areas/'+p[1])).join('')+'</div>';
 let title="Crest Crown Attorneys",body="";
-if(path==="/"){title="Legal Services Across Nigeria";body=intro("NIGERIAN LEGAL SERVICES • INTERNATIONAL ENQUIRIES","Strategic Legal Solutions Across Nigeria and Beyond","Practical, client-focused Nigerian legal services for individuals, organisations, investors and international clients.")+'<section class="wrap section"><div class="actions">'+link("/contact","Request a Consultation")+link("/practice-areas","Explore Our Services")+'</div><h2>Our Practice Areas</h2>'+practiceCards()+'</section><section class="band"><div class="wrap"><h2>Local knowledge. National perspective.</h2><p>Our office is in Effurun, Delta State. We welcome enquiries concerning Nigerian legal matters from across the country and internationally.</p></div></section>';}
+if(path==="/"){title="Strategic Legal Solutions";body='<section class="hero"><div class="hero-copy"><div class="hero-content"><p class="eyebrow">TRUST · JUSTICE · RESULTS</p><h1>Strategic Legal Solutions <span>with Integrity and Results</span></h1><p class="hero-lead">At Crest Crown Attorneys, we provide practical, client-focused legal guidance for individuals, businesses and corporate organisations, with a commitment to integrity and professionalism.</p><div class="hero-actions"><a class="btn btn-gold" href="/consultation">▦ &nbsp; Book Consultation <span aria-hidden="true">→</span></a><a class="btn btn-outline" href="/practice-areas">Explore Practice Areas <span aria-hidden="true">→</span></a></div></div></div><div class="hero-photo" role="img" aria-label="Law books and traditional symbols of justice"></div></section><section class="wrap section"><p class="eyebrow eyebrow-dark">HOW WE CAN HELP</p><h2>Our Practice Areas</h2><p class="section-lead">Thoughtful legal guidance for individuals, businesses and investors across Nigeria.</p>'+practiceCards()+'</section><section class="band"><div class="wrap"><h2>Local knowledge. National perspective.</h2><p>Based in Effurun, Delta State, and welcoming enquiries on Nigerian legal matters nationwide and internationally.</p><a href="/about">Discover our firm →</a></div></section>';}
+
 else if(path==="/about"){title="About Us";body=intro("THE FIRM",title,"Crest Crown Attorneys is committed to principled, client-focused legal services in Nigeria.")+'<section class="wrap section"><h2>Our approach</h2><p>We focus on clear communication, careful legal analysis and practical guidance. Our Effurun office is not a limit on the geographical scope of enquiries we welcome.</p></section>';}
 else if(path==="/practice-areas"){title="Practice Areas";body=intro("WHAT WE DO",title,"Explore Nigerian legal services for individuals, companies and overseas clients.")+'<section class="wrap section">'+practiceCards()+'</section>';}
 else if(path.startsWith("/practice-areas/")){const p=practices.find(x=>"/practice-areas/"+x[1]===path);if(p){title=p[0];body=intro("PRACTICE AREA",title,p[2])+'<section class="wrap section"><h2>How we can help</h2><p>Contact our team to discuss your specific Nigerian legal matter, applicable jurisdiction and appropriate next steps.</p>'+link("/contact","Request a consultation →")+'</section>';}else{title="Page not found";}}
@@ -23,7 +24,7 @@ else{title="Page not found";}
 if(!body)body=intro("404",title,"This page does not exist.")+'<section class="wrap section">'+link("/","Return home")+'</section>';
 document.title=title+" | Crest Crown Attorneys";
 document.querySelector('meta[name="description"]').setAttribute("content",title+" — Crest Crown Attorneys. Nigerian legal services for national and international clients.");
-document.getElementById("app").innerHTML='<a class="skip" href="#main">Skip to content</a><header><div class="wrap header"><a class="brand" href="/">CREST CROWN <span>ATTORNEYS</span></a><nav aria-label="Main navigation">'+nav.map(n=>link(n[1],n[0])).join('')+'</nav></div></header><main id="main">'+body+'</main><footer><div class="wrap"><strong>Crest Crown Attorneys</strong><p>Serving Nigerian legal needs nationwide and welcoming international enquiries.</p><div class="footerlinks">'+nav.map(n=>link(n[1],n[0])).join('')+link("/privacy-policy","Privacy")+link("/terms-of-use","Terms")+link("/legal-disclaimer","Disclaimer")+'</div><small>Information on this website does not constitute legal advice.</small></div></footer>';
+document.getElementById("app").innerHTML='<a class="skip" href="#main">Skip to content</a><div class="preview-notice">WEBSITE DEVELOPMENT PREVIEW — CONTENT SUBJECT TO COUNSEL\'S APPROVAL</div><header><div class="wrap header"><a class="brand" href="/" aria-label="Crest Crown Attorneys home"><span class="brand-emblem" aria-hidden="true">⚖</span><span class="brand-wordmark">CREST CROWN <span>ATTORNEYS</span><small>LAW · JUSTICE · RESULTS</small></span></a><button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">☰</button><nav id="primary-nav" aria-label="Main navigation">'+nav.filter(n=>n[1]!=="/careers").map(n=>link(n[1],n[0]==="Insights"?"Legal Insights":n[0])).join('')+'</nav><a class="header-cta" href="/consultation">▦ &nbsp; Book Consultation &nbsp; →</a></div></header><main id="main">'+body+'</main><footer><div class="wrap"><strong>Crest Crown Attorneys</strong><p>Serving Nigerian legal needs nationwide and welcoming international enquiries.</p><div class="footerlinks">'+nav.map(n=>link(n[1],n[0])).join('')+link("/privacy-policy","Privacy")+link("/terms-of-use","Terms")+link("/legal-disclaimer","Disclaimer")+'</div><small>Information on this website does not constitute legal advice.</small></div></footer>';\nconst menuToggle=document.querySelector(".menu-toggle");menuToggle?.addEventListener("click",()=>{const expanded=menuToggle.getAttribute("aria-expanded")==="true";menuToggle.setAttribute("aria-expanded",String(!expanded));document.querySelector("#primary-nav")?.classList.toggle("is-open",!expanded)});
 
 
 // Published custom sections are fetched from Cloudflare D1 and rendered as text,
@@ -51,7 +52,7 @@ document.getElementById("app").innerHTML='<a class="skip" href="#main">Skip to c
 // Cloudflare D1 CMS entries: pages, legal practices, team and articles.
 (async function renderPublishedCMS(){
  try{
-  const response=await fetch('/api/content');
+  const response=await fetch('/api/content',{credentials:"omit"});
   if(!response.ok)return;
   const {entries=[]}=await response.json();
   const routes={page:'',practice:'/practice-areas/',team:'/team/',post:'/insights/'};
@@ -86,8 +87,25 @@ if(path==='/contact'||path==='/consultation'){
  const h=document.createElement('h2');h.textContent='General enquiry';section.append(h);
  const note=document.createElement('p');note.textContent='Please do not submit confidential or sensitive case details. Sending an enquiry does not establish a lawyer-client relationship.';section.append(note);
  const form=document.createElement('form');form.innerHTML='<label>Name <input name="name" required minlength="2" maxlength="100"></label><label>Email <input name="email" type="email" required maxlength="200"></label><label>Subject <input name="topic" required maxlength="120"></label><label>Message <textarea name="message" required minlength="10" maxlength="3000"></textarea></label><input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px"><button type="submit">Send general enquiry</button><p role="status"></p>';
- form.addEventListener('submit',async event=>{event.preventDefault();const button=form.querySelector('button'),status=form.querySelector('[role="status"]');button.disabled=true;try{const body=Object.fromEntries(new FormData(form));body.turnstileToken=window.turnstile?.getResponse?.(widgetId)||'';const response=await fetch('/api/enquiries',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});if(!response.ok)throw Error('Enquiry service unavailable. Please use a verified official contact channel.');form.reset();status.textContent='Enquiry received. This is not confirmation of legal representation.'}catch(e){status.textContent=e.message}finally{button.disabled=false}});
+ form.addEventListener('submit',async event=>{event.preventDefault();const button=form.querySelector('button'),status=form.querySelector('[role="status"]');button.disabled=true;try{const body=Object.fromEntries(new FormData(form));body.turnstileToken=window.turnstile?.getResponse?.(widgetId)||'';const response=await fetch('/api/enquiries',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});if(!response.ok)throw Error('Enquiry service unavailable. Please use a verified official contact channel.');form.reset();window.turnstile?.reset?.(widgetId);button.disabled=true;status.textContent='Enquiry received. This is not confirmation of legal representation.'}catch(e){status.textContent=e.message}finally{button.disabled=false}});
  section.append(form);document.querySelector('main')?.append(section);
  let widgetId;const submit=form.querySelector('button');submit.disabled=true;
  fetch('/api/public-config').then(r=>r.json()).then(({turnstileSiteKey})=>{if(!turnstileSiteKey)throw Error('Enquiry verification not configured');const slot=document.createElement('div');form.insertBefore(slot,submit);const script=document.createElement('script');script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';script.async=true;script.onload=()=>{widgetId=window.turnstile.render(slot,{sitekey:turnstileSiteKey,callback:()=>{submit.disabled=false},'expired-callback':()=>{submit.disabled=true}})};document.head.append(script)}).catch(()=>{form.querySelector('[role="status"]').textContent='Enquiry form is not yet available. Please use the firm’s verified contact channels.'});
 }
+
+
+// Apply administrator-managed branding after rendering the default layout.
+(async function applyBranding(){
+ try{
+  const response=await fetch('/api/branding',{credentials:'omit'});if(!response.ok)return;
+  const {branding={}}=await response.json();
+  if(branding.logo_url){
+   const emblem=document.querySelector('.brand-emblem');
+   if(emblem){const img=document.createElement('img');img.src=branding.logo_url;img.alt='Crest Crown Attorneys logo';img.className='site-logo';emblem.replaceChildren(img)}
+  }
+  if(branding.banner_url){
+   const banner=document.querySelector('.hero-photo');
+   if(banner){banner.style.backgroundImage='linear-gradient(90deg,#071d3655,#0b1c3111),url("'+branding.banner_url+'")'}
+  }
+ }catch(error){console.warn('Branding settings unavailable',error)}
+})();
