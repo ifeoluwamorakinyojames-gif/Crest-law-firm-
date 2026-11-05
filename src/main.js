@@ -46,3 +46,46 @@ document.getElementById("app").innerHTML='<a class="skip" href="#main">Skip to c
   document.querySelector('main')?.append(target);
  }catch(error){console.warn('Custom content unavailable',error)}
 })();
+
+
+// Cloudflare D1 CMS entries: pages, legal practices, team and articles.
+(async function renderPublishedCMS(){
+ try{
+  const response=await fetch('/api/content');
+  if(!response.ok)return;
+  const {entries=[]}=await response.json();
+  const routes={page:'',practice:'/practice-areas/',team:'/team/',post:'/insights/'};
+  const match=entries.find(e=>e.kind==='page'&&('/'+e.slug)===path||e.kind==='practice'&&'/practice-areas/'+e.slug===path||e.kind==='team'&&'/team/'+e.slug===path||e.kind==='post'&&'/insights/'+e.slug===path);
+  const main=document.querySelector('main');if(!main)return;
+  if(match){
+   main.replaceChildren();
+   const section=document.createElement('section');section.className='wrap section';
+   const h=document.createElement('h1');h.textContent=match.title;
+   const lead=document.createElement('p');lead.className='lead';lead.textContent=match.summary;
+   section.append(h,lead);
+   if(match.image_url){const image=document.createElement('img');image.src=match.image_url;image.alt=match.title;image.loading='lazy';image.style.maxWidth='100%';section.append(image)}
+   const body=document.createElement('p');body.textContent=match.body;body.style.whiteSpace='pre-wrap';section.append(body);main.append(section);
+   document.title=(match.seo_title||match.title)+' | Crest Crown Attorneys';
+   document.querySelector('meta[name="description"]').content=match.seo_description||match.summary||match.title;
+   return;
+  }
+  const kinds=path==='/practice-areas'?['practice']:path==='/team'?['team']:path==='/insights'?['post']:[];
+  if(!kinds.length)return;
+  const items=entries.filter(e=>kinds.includes(e.kind));if(!items.length)return;
+  const section=document.createElement('section');section.className='wrap section';
+  const h=document.createElement('h2');h.textContent='Latest '+(kinds[0]==='post'?'Articles':kinds[0]==='team'?'Team Profiles':'Practice Areas');section.append(h);
+  const grid=document.createElement('div');grid.className='grid';
+  for(const entry of items){const article=document.createElement('article');article.className='card';const heading=document.createElement('h3');const a=document.createElement('a');a.href=routes[entry.kind]+entry.slug;a.textContent=entry.title;heading.append(a);const p=document.createElement('p');p.textContent=entry.summary;article.append(heading,p);grid.append(article)}
+  section.append(grid);main.append(section);
+ }catch(e){console.warn('Content unavailable',e)}
+})();
+
+// Enquiry form is only enabled when the D1-backed endpoint is available.
+if(path==='/contact'||path==='/consultation'){
+ const section=document.createElement('section');section.className='wrap section';
+ const h=document.createElement('h2');h.textContent='General enquiry';section.append(h);
+ const note=document.createElement('p');note.textContent='Please do not submit confidential or sensitive case details. Sending an enquiry does not establish a lawyer-client relationship.';section.append(note);
+ const form=document.createElement('form');form.innerHTML='<label>Name <input name="name" required minlength="2" maxlength="100"></label><label>Email <input name="email" type="email" required maxlength="200"></label><label>Subject <input name="topic" required maxlength="120"></label><label>Message <textarea name="message" required minlength="10" maxlength="3000"></textarea></label><input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px"><button type="submit">Send general enquiry</button><p role="status"></p>';
+ form.addEventListener('submit',async event=>{event.preventDefault();const button=form.querySelector('button'),status=form.querySelector('[role="status"]');button.disabled=true;try{const body=Object.fromEntries(new FormData(form));const response=await fetch('/api/enquiries',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});if(!response.ok)throw Error('Enquiry service unavailable. Please use a verified official contact channel.');form.reset();status.textContent='Enquiry received. This is not confirmation of legal representation.'}catch(e){status.textContent=e.message}finally{button.disabled=false}});
+ section.append(form);document.querySelector('main')?.append(section);
+}
