@@ -15,3 +15,26 @@ $('#loadEnquiries').onclick=async()=>{try{const response=await fetch('/api/enqui
 
 
 $('#uploadMedia').onclick=async()=>{const file=$('#mediaFile').files?.[0];if(!file){status.textContent='Select an image first';return}if(file.size>3*1024*1024){status.textContent='Image must be under 3 MB';return}const form=new FormData();form.append('file',file);try{const response=await fetch('/api/media',{method:'POST',body:form});const result=await response.json();if(!response.ok)throw Error(result.error||'Upload failed');$('#imageUrl').value=result.url;status.textContent='Image uploaded. Save the content entry to use it.'}catch(error){status.textContent=error.message}};
+
+
+async function loadBranding(){try{const r=await fetch('/api/branding');const d=await r.json();for(const [key,id] of [['logo_url','logoPreview'],['banner_url','bannerPreview'],['favicon_url','faviconPreview']]){if(d.branding?.[key])$('#'+id).src=d.branding[key]}}catch(e){status.textContent=e.message}}
+document.querySelectorAll('[data-brand]').forEach(button=>button.addEventListener('click',async()=>{
+ const key=button.dataset.brand,file=$('#'+button.dataset.input).files?.[0];
+ if(!file){status.textContent='Choose an image first.';return}
+ if(file.size>3*1024*1024){status.textContent='Maximum image size is 3 MB.';return}
+ if(key==='favicon_url'){
+  const image=await createImageBitmap(file).catch(()=>null);
+  if(!image||image.width!==image.height||image.width<48){image?.close();status.textContent='Favicon must be square and at least 48 × 48 pixels.';return}
+  image.close();
+ }
+ button.disabled=true;
+ try{
+  const form=new FormData();form.append('file',file);
+  const uploaded=await fetch('/api/media',{method:'POST',body:form});const result=await uploaded.json();
+  if(!uploaded.ok)throw Error(result.error||'Upload failed');
+  const saved=await fetch('/api/branding',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({[key]:result.url})});
+  if(!saved.ok)throw Error((await saved.json()).error||'Could not save branding');
+  status.textContent='Branding saved. Refresh the website to see the change.';await loadBranding();
+ }catch(e){status.textContent=e.message}finally{button.disabled=false}
+}));
+loadBranding();
