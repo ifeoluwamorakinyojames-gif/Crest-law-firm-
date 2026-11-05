@@ -14,3 +14,6 @@
 12. Require a successful GitHub Actions build for this branch and a verified Cloudflare preview before merging.
 ## Current restrictions
 The site remains intentionally noindex. No Cloudflare production deployment, browser integration test, approved legal text, or verified contact details are confirmed by GitHub CI. Do not call it production-ready until these are done.
+
+## Branding upload
+In /admin/, use Branding: Logo, Homepage Banner & Favicon. All three use the authenticated R2 media upload and D1 site_settings. The favicon has a stable /favicon.png route for crawlers and should be square, at least 48x48 pixels; use a clear official mark with appropriate rights. A search-engine favicon is not guaranteed: Google must be allowed to crawl the site and may take time to refresh its results. Keep the temporary robots noindex and robots.txt block until approved go-live, then remove both. The admin logo is not yet a substitute for legal verification of the firm's identity.
