@@ -8,8 +8,13 @@ export async function onRequestGet({request,env}){
 export async function onRequestPost({request,env}){
  if(!env.DB)return Response.json({error:'Database unavailable'},{status:503});
  if(!env.TURNSTILE_SECRET_KEY)return Response.json({error:'Enquiry protection not configured'},{status:503});
+ const contentType=request.headers.get('content-type')||'';
+ if(!contentType.toLowerCase().startsWith('application/json'))return Response.json({error:'JSON required'},{status:415});
+ const length=Number(request.headers.get('content-length')||0);
+ if(length>8000)return Response.json({error:'Request too large'},{status:413});
  let d;try{d=await request.json()}catch{return Response.json({error:'Invalid JSON'},{status:400})}
- const verification=await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({secret:env.TURNSTILE_SECRET_KEY,response:String(d.turnstileToken||'')})}).then(r=>r.json()).catch(()=>({success:false}));
+ if(!d||typeof d!=='object'||Array.isArray(d))return Response.json({error:'Invalid enquiry'},{status:400});
+ const verification=await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({secret:env.TURNSTILE_SECRET_KEY,response:String(d.turnstileToken||''),remoteip:request.headers.get('CF-Connecting-IP')||''})}).then(r=>r.json()).catch(()=>({success:false}));
  if(!verification.success)return Response.json({error:'Security verification failed'},{status:403});
  const name=String(d.name||'').trim(),email=String(d.email||'').trim(),topic=String(d.topic||'').trim(),message=String(d.message||'').trim();
  if(String(d.website||'').trim())return Response.json({ok:true});
