@@ -13,3 +13,6 @@ The website can receive traffic from Google Ads and Meta Ads via ordinary destin
 Before launching paid campaigns: verify domain ownership; choose approved landing pages and CTAs; configure Google Ads conversion tags or Meta Pixel via an appropriate consent-aware tag manager; publish an approved privacy/cookie notice; validate conversion events and test ad landing-page speed. Do not claim advertising campaigns are live.
 ## Limitations
 No image upload, blog editing, full-page editing, audit trail or rich-text editing in this first CMS. Cloudflare Access, D1 and Pages bindings require account-level configuration before admin works.
+
+## Browser authentication correction
+The CMS API verifies the Cloudflare Access JWT from the browser's CF_Authorization cookie, or the Cf-Access-Jwt-Assertion header when present. Configure an Access application on /admin/* with the same team domain and AUD configured in Pages. Restrict its policy to approved administrators; the API separately verifies JWT and ADMIN_EMAILS. Confirm the Access cookie is sent to same-origin API requests in the deployed environment. Do not protect public GET /api/content and /api/sections behind Access.
